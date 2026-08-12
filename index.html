@@ -1,0 +1,1811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gamil Mamdouh — Embedded Systems &amp; Robotics · Web Development</title>
+<meta name="description" content="Gamil Mamdouh Elgamil Asham — STEM student and Embedded Systems &amp; Robotics learner. Hands-on experience across embedded systems, robotics, IoT, automation and web development.">
+<meta name="theme-color" content="#05070b">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gamil Mamdouh — Embedded Systems & Robotics | Web Development">
+<meta property="og:description" content="Portfolio of Gamil Mamdouh Elgamil Asham: embedded systems, robotics, IoT, automation and web development projects.">
+<meta property="og:image" content="https://via.placeholder.com/1200x630/05070b/00BFFF?text=Gamil+Mamdouh">
+
+<!-- Structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gamil Mamdouh Elgamil Asham",
+  "alternateName": "Gamil Mamdouh",
+  "jobTitle": "Embedded Systems & Robotics | Web Development",
+  "description": "STEM student and Embedded Systems & Robotics learner with hands-on experience in embedded, robotics, IoT, automation and web applications."
+}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305070b'/%3E%3Cpath d='M16 32h10M38 32h10M32 16v10M32 38v10' stroke='%2300BFFF' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='32' r='7' fill='none' stroke='%2300E5FF' stroke-width='3'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   0. TOKENS
+   ============================================================ */
+:root{
+  --dark:#05070b;
+  --dark-2:#080b12;
+  --dark-light:#0b1220;
+  --panel:#0d1420;
+  --panel-2:#0f1726;
+  --border:rgba(0,191,255,.14);
+  --border-strong:rgba(0,191,255,.32);
+
+  --electric-blue:#00BFFF;
+  --electric-blue-bright:#00E5FF;
+  --indigo:#6366f1;
+  --indigo-dark:#4f46e5;
+  --pink:#ec4899;
+  --teal:#14b8a6;
+  --green:#10b981;
+
+  --white:#f2f6fb;
+  --muted:#8a95a8;
+  --muted-2:#5c6579;
+
+  --font-display:'Space Grotesk', sans-serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+
+  --radius-sm:8px;
+  --radius-md:14px;
+  --radius-lg:22px;
+
+  --ease:cubic-bezier(.16,.8,.24,1);
+  --rail-w:64px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+}
+body{
+  background:var(--dark);
+  color:var(--white);
+  font-family:var(--font-body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button{font:inherit;cursor:pointer;background:none;border:none;color:inherit}
+input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--electric-blue);color:#05070b}
+
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--electric-blue)}
+
+:focus-visible{outline:2px solid var(--electric-blue-bright);outline-offset:3px;border-radius:4px}
+
+.container{max-width:1200px;margin-inline:auto;padding-inline:28px}
+@media (max-width:640px){.container{padding-inline:20px}}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:.72rem;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--electric-blue);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:16px;
+}
+.eyebrow::before{
+  content:'';
+  width:22px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--electric-blue));
+}
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:600;letter-spacing:-.01em;color:var(--white)}
+.section-head{max-width:640px;margin-bottom:56px}
+.section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:14px}
+.section-head p{color:var(--muted);font-size:1.02rem}
+
+section{position:relative;padding:110px 0;border-top:1px solid var(--border)}
+section:first-of-type{border-top:none}
+@media (max-width:768px){section{padding:80px 0}}
+
+.mono{font-family:var(--font-mono)}
+.text-blue{color:var(--electric-blue)}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 26px;border-radius:10px;
+  font-family:var(--font-mono);font-size:.85rem;font-weight:500;letter-spacing:.02em;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--electric-blue),var(--electric-blue-bright));
+  color:#03151f;
+  box-shadow:0 0 0 rgba(0,191,255,0);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(0,191,255,.55)}
+.btn-ghost{
+  border:1px solid var(--border-strong);
+  color:var(--white);
+  background:rgba(0,191,255,.04);
+}
+.btn-ghost:hover{border-color:var(--electric-blue);background:rgba(0,191,255,.1);transform:translateY(-2px)}
+.btn-sm{padding:9px 16px;font-size:.75rem;border-radius:8px}
+
+/* chips / tags */
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:6px 12px;border-radius:999px;
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.02em;
+  border:1px solid var(--border);color:var(--muted);
+  background:rgba(255,255,255,.02);
+}
+
+/* reveal-on-scroll */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.reveal-stagger > *{transition-delay:calc(var(--i,0) * 70ms)}
+
+/* ============================================================
+   1. BACKGROUND FX (grid + circuit)
+   ============================================================ */
+.bg-grid{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(0,191,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,191,255,.05) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,#000 40%,transparent 100%);
+}
+.bg-glow{
+  position:fixed;z-index:0;pointer-events:none;border-radius:50%;
+  filter:blur(120px);opacity:.28;
+}
+.bg-glow.one{width:520px;height:520px;background:var(--electric-blue);top:-160px;left:-120px}
+.bg-glow.two{width:460px;height:460px;background:var(--indigo);bottom:-140px;right:-100px;opacity:.16}
+
+/* ============================================================
+   2. NAVBAR
+   ============================================================ */
+header.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(5,7,11,.72);backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid var(--border);
+  transition:border-color .3s;
+}
+.nav-inner{
+  max-width:1200px;margin-inline:auto;padding:16px 28px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:38px;height:38px;border-radius:9px;
+  background:linear-gradient(135deg,var(--dark-light),var(--panel));
+  border:1px solid var(--border-strong);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-mono);font-weight:600;color:var(--electric-blue-bright);
+  font-size:.85rem;
+  box-shadow:inset 0 0 12px rgba(0,191,255,.15);
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.15}
+.brand-text strong{font-family:var(--font-display);font-size:.98rem;letter-spacing:.01em}
+.brand-text span{font-family:var(--font-mono);font-size:.66rem;color:var(--muted);letter-spacing:.06em}
+
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{
+  padding:9px 15px;border-radius:8px;font-size:.87rem;color:var(--muted);
+  position:relative;transition:color .2s;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-links a.active{color:var(--electric-blue-bright)}
+.nav-links a.active::after{
+  content:'';position:absolute;left:15px;right:15px;bottom:2px;height:2px;
+  background:linear-gradient(90deg,var(--electric-blue),var(--electric-blue-bright));
+  box-shadow:0 0 10px var(--electric-blue);
+  border-radius:2px;
+}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.nav-toggle{display:none;width:40px;height:40px;border:1px solid var(--border-strong);border-radius:8px;align-items:center;justify-content:center}
+.nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{
+  content:'';display:block;width:18px;height:2px;background:var(--white);position:relative;transition:.25s;
+}
+.nav-toggle span::before{position:absolute;top:-6px}
+.nav-toggle span::after{position:absolute;top:6px}
+.nav-toggle.open span{background:transparent}
+.nav-toggle.open span::before{transform:rotate(45deg);top:0}
+.nav-toggle.open span::after{transform:rotate(-45deg);top:0}
+
+.mobile-menu{
+  display:none;position:fixed;inset:64px 0 0 0;z-index:99;
+  background:rgba(5,7,11,.98);backdrop-filter:blur(10px);
+  padding:30px 28px;flex-direction:column;gap:6px;
+  transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s var(--ease);
+}
+.mobile-menu.open{transform:none;opacity:1;pointer-events:auto}
+.mobile-menu a{padding:16px 6px;font-size:1.1rem;border-bottom:1px solid var(--border);color:var(--muted)}
+.mobile-menu a.active{color:var(--electric-blue-bright)}
+
+@media (max-width:900px){
+  .nav-links{display:none}
+  .nav-toggle{display:flex}
+  .mobile-menu{display:flex}
+  .nav-cta .btn-ghost{display:none}
+}
+
+/* ============================================================
+   3. SIDE RAIL (signature element — circuit test-point nav)
+   ============================================================ */
+.rail{
+  position:fixed;left:26px;top:50%;transform:translateY(-50%);
+  z-index:90;display:flex;flex-direction:column;align-items:center;gap:0;
+}
+.rail-line{
+  position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(var(--border-strong),var(--border-strong));
+  transform:translateX(-50%);
+}
+.rail-node{
+  position:relative;z-index:1;width:34px;height:34px;
+  display:flex;align-items:center;justify-content:center;
+  margin:2px 0;
+}
+.rail-node .dot{
+  width:9px;height:9px;border-radius:50%;
+  background:var(--dark-light);border:1.5px solid var(--muted-2);
+  transition:.3s var(--ease);
+}
+.rail-node.active .dot{
+  background:var(--electric-blue-bright);border-color:var(--electric-blue-bright);
+  box-shadow:0 0 0 4px rgba(0,229,255,.15),0 0 14px var(--electric-blue);
+}
+.rail-node .rail-label{
+  position:absolute;left:26px;top:50%;transform:translateY(-50%) translateX(-6px);
+  font-family:var(--font-mono);font-size:.68rem;color:var(--electric-blue-bright);
+  white-space:nowrap;background:var(--panel);border:1px solid var(--border-strong);
+  padding:5px 10px;border-radius:6px;opacity:0;pointer-events:none;transition:.2s var(--ease);
+}
+.rail-node:hover .rail-label{opacity:1;transform:translateY(-50%) translateX(0)}
+@media (max-width:1100px){.rail{display:none}}
+
+/* ============================================================
+   4. HERO
+   ============================================================ */
+.hero{
+  min-height:100svh;display:flex;align-items:center;
+  padding-top:120px;padding-bottom:80px;border-top:none;position:relative;overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:2;
+}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--font-mono);font-size:.74rem;letter-spacing:.14em;color:var(--electric-blue-bright);
+  border:1px solid var(--border-strong);padding:7px 14px;border-radius:999px;margin-bottom:26px;
+  background:rgba(0,191,255,.06);
+}
+.hero-kicker .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:pulse-dot 1.8s ease-in-out infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.35}}
+
+.hero h1{
+  font-size:clamp(2.4rem,5.4vw,4.1rem);line-height:1.06;letter-spacing:-.02em;margin-bottom:20px;
+}
+.hero h1 .last{color:var(--electric-blue-bright)}
+.hero-role{
+  font-family:var(--font-mono);color:var(--muted);font-size:clamp(.95rem,1.6vw,1.15rem);
+  margin-bottom:26px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+}
+.hero-role .sep{color:var(--electric-blue)}
+.hero p.lead{color:var(--muted);font-size:1.05rem;max-width:52ch;margin-bottom:36px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:46px}
+.hero-stats{display:flex;gap:36px;flex-wrap:wrap}
+.hero-stats div strong{display:block;font-family:var(--font-display);font-size:1.6rem;color:var(--white)}
+.hero-stats div span{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+
+.hero-visual{position:relative;aspect-ratio:1/1;max-width:480px;justify-self:center}
+.hero-visual svg{width:100%;height:100%}
+.hero-visual .core-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:1px dashed var(--border-strong);
+  animation:spin 40s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:50px}
+  .hero-visual{max-width:340px;order:-1}
+}
+
+/* ============================================================
+   5. ABOUT
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+.about-copy p{color:var(--muted);margin-bottom:18px;font-size:1.01rem}
+.about-copy p strong{color:var(--white);font-weight:600}
+.pillars{display:grid;gap:14px}
+.pillar{
+  border:1px solid var(--border);background:var(--panel);
+  border-radius:var(--radius-md);padding:20px 22px;
+  display:flex;gap:16px;align-items:flex-start;
+  transition:.3s var(--ease);
+}
+.pillar:hover{border-color:var(--border-strong);transform:translateX(4px);background:var(--panel-2)}
+.pillar-icon{
+  width:42px;height:42px;flex:none;border-radius:10px;
+  background:rgba(0,191,255,.08);border:1px solid var(--border-strong);
+  display:flex;align-items:center;justify-content:center;color:var(--electric-blue-bright);
+}
+.pillar h4{font-size:1rem;margin-bottom:4px}
+.pillar p{color:var(--muted);font-size:.9rem}
+@media (max-width:900px){.about-grid{grid-template-columns:1fr;gap:36px}}
+
+/* ============================================================
+   6. EDUCATION / TECHNICAL JOURNEY (timeline on the trace)
+   ============================================================ */
+.timeline{position:relative;padding-left:40px}
+.timeline::before{
+  content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(var(--electric-blue),var(--border) 90%);
+}
+.tl-item{position:relative;padding-bottom:48px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:'';position:absolute;left:-40px;top:2px;width:20px;height:20px;border-radius:50%;
+  background:var(--dark);border:2px solid var(--electric-blue);
+  box-shadow:0 0 0 5px rgba(0,191,255,.1);
+}
+.tl-item.featured::before{background:var(--electric-blue);box-shadow:0 0 0 5px rgba(0,191,255,.18),0 0 16px var(--electric-blue)}
+.tl-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:8px}
+.tl-head h3{font-size:1.2rem}
+.tl-duration{font-family:var(--font-mono);font-size:.74rem;color:var(--electric-blue);border:1px solid var(--border-strong);padding:3px 10px;border-radius:999px}
+.tl-org{color:var(--muted-2);font-family:var(--font-mono);font-size:.82rem;margin-bottom:12px}
+.tl-body p{color:var(--muted);margin-bottom:14px;max-width:64ch}
+.tl-tags{display:flex;flex-wrap:wrap;gap:8px}
+
+/* ============================================================
+   7. SKILLS
+   ============================================================ */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.skill-card{
+  border:1px solid var(--border);background:var(--panel);border-radius:var(--radius-md);
+  padding:26px;transition:.3s var(--ease);position:relative;overflow:hidden;
+}
+.skill-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--accent,var(--electric-blue)),transparent);
+  opacity:.7;
+}
+.skill-card:hover{transform:translateY(-4px);border-color:var(--border-strong);box-shadow:0 20px 40px -20px rgba(0,191,255,.25)}
+.skill-card .sk-icon{
+  width:46px;height:46px;border-radius:11px;margin-bottom:18px;
+  background:color-mix(in srgb, var(--accent,var(--electric-blue)) 14%, transparent);
+  border:1px solid color-mix(in srgb, var(--accent,var(--electric-blue)) 40%, transparent);
+  display:flex;align-items:center;justify-content:center;color:var(--accent,var(--electric-blue-bright));
+}
+.skill-card h3{font-size:1.05rem;margin-bottom:6px}
+.skill-card .sk-desc{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+.sk-tags{display:flex;flex-wrap:wrap;gap:7px}
+
+/* ============================================================
+   8. PROJECTS
+   ============================================================ */
+.projects-toolbar{
+  display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:38px;
+}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px}
+.filter-btn{
+  padding:9px 16px;border-radius:999px;font-family:var(--font-mono);font-size:.76rem;
+  border:1px solid var(--border);color:var(--muted);transition:.25s;
+}
+.filter-btn:hover{border-color:var(--border-strong);color:var(--white)}
+.filter-btn.active{background:var(--electric-blue);border-color:var(--electric-blue);color:#03151f;font-weight:600}
+.search-box{
+  display:flex;align-items:center;gap:10px;border:1px solid var(--border);
+  border-radius:10px;padding:10px 14px;min-width:220px;background:var(--panel);
+}
+.search-box input{background:none;border:none;color:var(--white);width:100%;font-size:.88rem}
+.search-box input::placeholder{color:var(--muted-2)}
+.search-box svg{flex:none;color:var(--muted)}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.project-card{
+  border:1px solid var(--border);background:var(--panel);border-radius:var(--radius-md);
+  overflow:hidden;display:flex;flex-direction:column;transition:.35s var(--ease);cursor:pointer;
+}
+.project-card:hover{transform:translateY(-6px);border-color:var(--border-strong);box-shadow:0 26px 50px -24px rgba(0,191,255,.35)}
+.project-media{
+  aspect-ratio:16/10;position:relative;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0,191,255,.18), transparent 55%),
+    linear-gradient(135deg,var(--dark-light),var(--panel-2));
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.project-media svg{width:56%;height:56%;color:var(--electric-blue);opacity:.85}
+.badge-featured{
+  position:absolute;top:12px;left:12px;font-family:var(--font-mono);font-size:.66rem;
+  background:rgba(0,229,255,.12);border:1px solid var(--electric-blue-bright);color:var(--electric-blue-bright);
+  padding:5px 10px;border-radius:999px;letter-spacing:.05em;
+}
+.badge-cat{
+  position:absolute;top:12px;right:12px;font-family:var(--font-mono);font-size:.64rem;
+  background:rgba(0,0,0,.5);border:1px solid var(--border);color:var(--muted);
+  padding:5px 10px;border-radius:999px;
+}
+.project-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.project-body h3{font-size:1.12rem;margin-bottom:8px}
+.project-body p{color:var(--muted);font-size:.88rem;margin-bottom:16px;flex:1}
+.project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+.project-foot{display:flex;align-items:center;justify-content:space-between}
+.project-link{font-family:var(--font-mono);font-size:.78rem;color:var(--electric-blue-bright);display:inline-flex;align-items:center;gap:6px}
+
+.empty-state{
+  text-align:center;padding:60px 24px;border:1px dashed var(--border-strong);border-radius:var(--radius-md);color:var(--muted);
+}
+.empty-state svg{margin:0 auto 16px;color:var(--muted-2)}
+.empty-state h4{color:var(--white);margin-bottom:8px;font-size:1.05rem}
+.empty-state p{max-width:44ch;margin-inline:auto;font-size:.88rem}
+
+/* Modal */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;background:rgba(2,4,8,.78);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;pointer-events:none;transition:.25s var(--ease);
+}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+.modal{
+  background:var(--panel-2);border:1px solid var(--border-strong);border-radius:var(--radius-lg);
+  max-width:640px;width:100%;max-height:86vh;overflow-y:auto;
+  transform:translateY(16px) scale(.98);transition:.3s var(--ease);
+  box-shadow:0 40px 100px -30px rgba(0,191,255,.25);
+}
+.modal-overlay.open .modal{transform:none}
+.modal-media{aspect-ratio:16/9;background:linear-gradient(135deg,var(--dark-light),var(--panel));display:flex;align-items:center;justify-content:center;position:relative}
+.modal-media svg{width:40%;height:40%;color:var(--electric-blue)}
+.modal-close{
+  position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:9px;
+  background:rgba(0,0,0,.5);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;
+}
+.modal-body{padding:30px}
+.modal-body h3{font-size:1.4rem;margin-bottom:10px}
+.modal-body .project-tags{margin-bottom:20px}
+.modal-body p{color:var(--muted);margin-bottom:16px}
+.modal-section-label{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;color:var(--electric-blue);text-transform:uppercase;margin:20px 0 10px}
+
+/* ============================================================
+   9. SERVICES
+   ============================================================ */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.service-card{border:1px solid var(--border);background:var(--panel);border-radius:var(--radius-md);padding:26px;transition:.3s var(--ease)}
+.service-card:hover{border-color:var(--border-strong);transform:translateY(-4px)}
+.service-card .num{font-family:var(--font-mono);color:var(--muted-2);font-size:.78rem;margin-bottom:14px;display:block}
+.service-card h3{font-size:1.02rem;margin-bottom:8px}
+.service-card p{color:var(--muted);font-size:.86rem}
+
+/* ============================================================
+   10. CERTIFICATES
+   ============================================================ */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.cert-card{
+  border:1px solid var(--border);background:var(--panel);border-radius:var(--radius-md);
+  padding:22px;display:flex;flex-direction:column;gap:14px;transition:.3s var(--ease);
+}
+.cert-card:hover{border-color:var(--border-strong);transform:translateY(-3px)}
+.cert-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.cert-icon{width:40px;height:40px;border-radius:9px;background:rgba(0,191,255,.08);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--electric-blue-bright);flex:none}
+.cert-card h4{font-size:.96rem;margin-bottom:4px}
+.cert-issuer{color:var(--muted);font-size:.8rem}
+.cert-meta{display:flex;justify-content:space-between;align-items:center;font-family:var(--font-mono);font-size:.72rem;color:var(--muted-2);border-top:1px dashed var(--border);padding-top:12px}
+.cert-actions{display:flex;gap:8px}
+
+.load-more-wrap{display:flex;justify-content:center;margin-top:36px}
+
+/* ============================================================
+   11. STATS
+   ============================================================ */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:20px;
+  border:1px solid var(--border);border-radius:var(--radius-lg);padding:40px;
+  background:linear-gradient(135deg,rgba(0,191,255,.05),transparent 60%);
+}
+.stat{text-align:center}
+.stat strong{display:block;font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);color:var(--electric-blue-bright);margin-bottom:6px}
+.stat span{font-family:var(--font-mono);font-size:.72rem;color:var(--muted);letter-spacing:.04em}
+
+/* ============================================================
+   12. TESTIMONIALS
+   ============================================================ */
+.testi-empty{
+  border:1px dashed var(--border-strong);border-radius:var(--radius-lg);padding:60px 30px;text-align:center;color:var(--muted);
+}
+.testi-empty svg{margin:0 auto 18px;color:var(--electric-blue)}
+.testi-empty h4{color:var(--white);margin-bottom:8px}
+.testi-empty p{max-width:48ch;margin-inline:auto;font-size:.9rem}
+
+/* ============================================================
+   13. CONTACT
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px}
+.contact-card{border:1px solid var(--border);border-radius:var(--radius-md);padding:24px;background:var(--panel);margin-bottom:14px;display:flex;gap:16px;align-items:center}
+.contact-card .ic{width:42px;height:42px;border-radius:10px;background:rgba(0,191,255,.08);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--electric-blue-bright);flex:none}
+.contact-card strong{display:block;font-size:.92rem}
+.contact-card span{color:var(--muted);font-size:.82rem}
+.social-row{display:flex;gap:10px;margin-top:22px}
+.social-btn{width:42px;height:42px;border-radius:10px;border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;transition:.25s}
+.social-btn:hover{background:var(--electric-blue);color:#03151f;transform:translateY(-2px)}
+
+.form{display:grid;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field label{display:block;font-family:var(--font-mono);font-size:.72rem;color:var(--muted);margin-bottom:8px;letter-spacing:.04em}
+.field input,.field textarea{
+  width:100%;background:var(--panel);border:1px solid var(--border);border-radius:10px;
+  padding:13px 15px;color:var(--white);font-size:.92rem;transition:.2s;
+}
+.field input:focus,.field textarea:focus{border-color:var(--electric-blue);box-shadow:0 0 0 3px rgba(0,191,255,.12)}
+.field textarea{resize:vertical;min-height:130px}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;z-index:1}
+.footer-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px;margin-bottom:36px}
+.footer-links{display:flex;flex-wrap:wrap;gap:24px}
+.footer-links a{color:var(--muted);font-size:.86rem}
+.footer-links a:hover{color:var(--electric-blue-bright)}
+.footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted-2);font-family:var(--font-mono);font-size:.74rem}
+.footer-bottom button{color:var(--muted-2);font-family:var(--font-mono)}
+.footer-bottom button:hover{color:var(--electric-blue)}
+
+/* ============================================================
+   15. TOASTS
+   ============================================================ */
+.toast-wrap{position:fixed;bottom:24px;right:24px;z-index:400;display:flex;flex-direction:column;gap:10px}
+.toast{
+  background:var(--panel-2);border:1px solid var(--border-strong);border-left:3px solid var(--electric-blue);
+  border-radius:10px;padding:14px 18px;font-size:.86rem;min-width:240px;
+  box-shadow:0 20px 50px -20px rgba(0,0,0,.6);
+  animation:toast-in .3s var(--ease);
+}
+@keyframes toast-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ============================================================
+   16. ADMIN (lightweight content editor — see JS comments)
+   ============================================================ */
+.admin-fab{
+  position:fixed;bottom:24px;left:24px;z-index:150;width:46px;height:46px;border-radius:50%;
+  background:var(--panel-2);border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;
+  color:var(--muted);transition:.25s;opacity:.55;
+}
+.admin-fab:hover{opacity:1;color:var(--electric-blue-bright);border-color:var(--electric-blue)}
+.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(2,4,8,.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:.25s}
+.admin-overlay.open{opacity:1;pointer-events:auto}
+.admin-panel{background:var(--panel-2);border:1px solid var(--border-strong);border-radius:var(--radius-lg);width:100%;max-width:760px;max-height:88vh;overflow-y:auto;padding:30px}
+.admin-panel h3{margin-bottom:6px}
+.admin-panel .sub{color:var(--muted);font-size:.85rem;margin-bottom:24px}
+.admin-tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
+.admin-tab{padding:8px 14px;border-radius:8px;font-family:var(--font-mono);font-size:.76rem;border:1px solid var(--border)}
+.admin-tab.active{border-color:var(--electric-blue);color:var(--electric-blue-bright);background:rgba(0,191,255,.08)}
+.admin-list{display:grid;gap:10px;margin-bottom:20px}
+.admin-item{border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.admin-item strong{font-size:.88rem;display:block}
+.admin-item span{color:var(--muted);font-size:.76rem}
+.admin-item-actions{display:flex;gap:6px;flex:none}
+.admin-item-actions button{width:30px;height:30px;border-radius:7px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
+.admin-item-actions button:hover{border-color:var(--electric-blue);color:var(--electric-blue-bright)}
+.admin-note{
+  font-size:.78rem;color:var(--muted);border:1px dashed var(--border-strong);border-radius:10px;padding:14px 16px;margin-top:6px;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow one" aria-hidden="true"></div>
+<div class="bg-glow two" aria-hidden="true"></div>
+
+<!-- ============================================================
+     NAVBAR
+     ============================================================ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="brand">
+      <span class="brand-mark">GM</span>
+      <span class="brand-text"><strong>Gamil Mamdouh</strong><span>ENGINEERING PORTFOLIO</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home" data-nav>Home</a>
+      <a href="#about" data-nav>About</a>
+      <a href="#journey" data-nav>Journey</a>
+      <a href="#skills" data-nav>Skills</a>
+      <a href="#projects" data-nav>Projects</a>
+      <a href="#services" data-nav>Services</a>
+      <a href="#certificates" data-nav>Certificates</a>
+      <a href="#contact" data-nav>Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost btn-sm">Contact Me</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" data-nav>Home</a>
+  <a href="#about" data-nav>About</a>
+  <a href="#journey" data-nav>Journey</a>
+  <a href="#skills" data-nav>Skills</a>
+  <a href="#projects" data-nav>Projects</a>
+  <a href="#services" data-nav>Services</a>
+  <a href="#certificates" data-nav>Certificates</a>
+  <a href="#contact" data-nav>Contact</a>
+</div>
+
+<!-- Side rail — circuit test-point navigation -->
+<nav class="rail" id="rail" aria-label="Section navigation">
+  <div class="rail-line" aria-hidden="true"></div>
+</nav>
+
+<main id="home">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero" style="border-top:none">
+  <div class="container hero-grid">
+    <div class="reveal in">
+      <div class="hero-kicker"><span class="pulse"></span> Available for embedded &amp; web engineering work</div>
+      <h1>Gamil Mamdouh<br>Elgamil Asham<span class="last">.</span></h1>
+      <div class="hero-role">
+        <span>Embedded Systems &amp; Robotics</span><span class="sep">/</span><span>Web Development</span>
+      </div>
+      <p class="lead">I am a STEM student and Embedded Systems &amp; Robotics learner with hands-on experience building real-world embedded, robotics, IoT, automation, and web applications.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Explore My Projects</a>
+        <a href="/assets/Gamil-Mamdouh-CV.pdf" class="btn btn-ghost" download>Download CV</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>3</strong><span>YEARS · DECI TRACK</span></div>
+        <div><strong>5+</strong><span>HANDS-ON PROJECTS</span></div>
+        <div><strong>2</strong><span>ENGINEERING DISCIPLINES</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal in" aria-hidden="true">
+      <div class="core-ring"></div>
+      <svg viewBox="0 0 400 400" fill="none">
+        <circle cx="200" cy="200" r="150" stroke="#0e2a38" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" stroke="#0e2a38" stroke-width="1"/>
+        <g id="pcbTraces" stroke="#00BFFF" stroke-width="1.4" stroke-linecap="round" opacity="0.85">
+          <path d="M200 50 V90 M200 350 V310 M50 200 H90 M350 200 H310" />
+          <path d="M200 90 L140 140 H90" />
+          <path d="M200 90 L260 140 H310" />
+          <path d="M200 310 L140 260 H90" />
+          <path d="M200 310 L260 260 H310" />
+        </g>
+        <g id="pcbNodes" fill="#00E5FF">
+          <circle cx="200" cy="90" r="4"/><circle cx="200" cy="310" r="4"/>
+          <circle cx="90" cy="140" r="3.5"/><circle cx="310" cy="140" r="3.5"/>
+          <circle cx="90" cy="260" r="3.5"/><circle cx="310" cy="260" r="3.5"/>
+        </g>
+        <circle cx="200" cy="200" r="46" fill="#0b1220" stroke="#00BFFF" stroke-width="1.6"/>
+        <text x="200" y="196" text-anchor="middle" fill="#00E5FF" font-family="JetBrains Mono, monospace" font-size="13" font-weight="600">GM</text>
+        <text x="200" y="212" text-anchor="middle" fill="#5c6579" font-family="JetBrains Mono, monospace" font-size="8">ESP32 · IoT</text>
+        <g id="pulseDots" fill="#00E5FF"></g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT
+     ============================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">01 · About</div>
+      <h2>Two disciplines, one engineering mindset</h2>
+      <p>How a STEM education and years of hands-on training turned into practical embedded and web engineering skills.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>I'm a <strong>STEM student</strong> who spends most of my time where hardware and software meet — wiring up sensors, reading datasheets, and then building the interface or dashboard that makes the data useful.</p>
+        <p>My technical foundation was built at <strong>STEM Schools</strong>, where I worked on practical engineering, embedded systems, electronics, programming, and scientific projects rather than purely theoretical coursework.</p>
+        <p>Alongside that, I specialized for <strong>three years in Embedded Systems &amp; Robotics</strong> through the Digital Egypt Cubs Initiative — a sustained, practical training track covering microcontrollers, sensors, electronics, and prototyping.</p>
+        <p>That combination is why I describe myself with two directions instead of one: <strong>Embedded Systems &amp; Robotics</strong> for the physical, sensor-driven side of engineering, and <strong>Web Development</strong> for the interfaces, dashboards, and platforms that sit on top of it.</p>
+      </div>
+
+      <div class="pillars reveal">
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>
+          </div>
+          <div><h4>Embedded Systems</h4><p>Microcontrollers, sensors, and firmware that read the physical world reliably.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+          </div>
+          <div><h4>Robotics &amp; Automation</h4><p>Turning sensor input into control logic — motors, actuators, and automated behavior.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          </div>
+          <div><h4>IoT &amp; Connectivity</h4><p>Getting embedded devices onto the network so their data is actually usable.</p></div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+          </div>
+          <div><h4>Web Development</h4><p>Frontend and backend work that turns raw project data into something people can use.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     EDUCATION / TECHNICAL JOURNEY
+     ============================================================ -->
+<section id="journey">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">02 · Journey</div>
+      <h2>STEM education → three years of embedded training</h2>
+      <p>The path from foundational STEM coursework to a specialized, multi-year embedded systems and robotics track.</p>
+    </div>
+
+    <div class="timeline" id="timelineList">
+      <!-- populated by JS from DATA.education -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SKILLS
+     ============================================================ -->
+<section id="skills">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">03 · Skills</div>
+      <h2>What I actually work with</h2>
+      <p>Grouped by discipline — from low-level embedded work to the web tools I use to present it.</p>
+    </div>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROJECTS
+     ============================================================ -->
+<section id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">04 · Projects</div>
+      <h2>Selected builds</h2>
+      <p>Real hardware and software projects, from an early digital voltmeter to sensor-driven automation systems.</p>
+    </div>
+
+    <div class="projects-toolbar reveal">
+      <div class="filter-row" id="projectFilters"></div>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="projectSearch" placeholder="Search projects, tech, tags…">
+      </div>
+    </div>
+
+    <div class="projects-grid" id="projectsGrid"></div>
+    <div class="empty-state" id="projectsEmpty" style="display:none">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <h4>No projects match that search</h4>
+      <p>Try a different keyword or clear the filters above.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES
+     ============================================================ -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">05 · Services</div>
+      <h2>Where I can help</h2>
+      <p>Capability areas based on the engineering work I've actually done.</p>
+    </div>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CERTIFICATES
+     ============================================================ -->
+<section id="certificates">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">06 · Certificates</div>
+      <h2>Credentials &amp; training</h2>
+      <p>A growing certificate library — managed from the content editor, not hard-coded into the page.</p>
+    </div>
+
+    <div class="projects-toolbar reveal">
+      <div class="filter-row" id="certFilters"></div>
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input type="text" id="certSearch" placeholder="Search certificates…">
+      </div>
+    </div>
+
+    <div class="cert-grid" id="certGrid"></div>
+    <div class="empty-state" id="certEmpty" style="display:none">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15c3.3 0 6-2.7 6-6s-2.7-6-6-6-6 2.7-6 6 2.7 6 6 6z"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg>
+      <h4 id="certEmptyTitle">Certificates coming soon</h4>
+      <p id="certEmptyBody">The certificate library is being catalogued and will appear here — this section already supports search, filtering and pagination for when it's populated. Add entries from the content editor (bottom-left icon).</p>
+    </div>
+    <div class="load-more-wrap" id="certLoadMoreWrap" style="display:none">
+      <button class="btn btn-ghost" id="certLoadMore">Load more certificates</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     STATS
+     ============================================================ -->
+<section id="achievements">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">07 · By the numbers</div>
+      <h2>Where the time went</h2>
+    </div>
+    <div class="stats-strip reveal" id="statsStrip"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS
+     ============================================================ -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">08 · Testimonials</div>
+      <h2>From mentors &amp; collaborators</h2>
+    </div>
+    <div class="testi-empty reveal">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h.01M12 10h.01M16 10h.01M21 12a9 9 0 1 1-9-9c4.97 0 9 3.5 9 8Z"/></svg>
+      <h4>No testimonials published yet</h4>
+      <p>This section is wired up and ready — quotes from instructors, mentors, or project collaborators can be added here through the content editor once available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">09 · Contact</div>
+      <h2>Let's build something</h2>
+      <p>Open to embedded systems, robotics, IoT, and web development opportunities and collaborations.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-card">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></div>
+          <div><strong>Email</strong><span id="contactEmail">your.email@example.com</span></div>
+        </div>
+        <div class="contact-card">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.4 17.5c-.6 1.5-3 2.7-4.7 2.9-1.2.1-2.7-.4-6.1-2C5.3 16.1 2.8 12 2.6 11.7 2.4 11.4.5 8.9.5 6.3S1.9 2.2 2.4 1.7c.5-.5 1.1-.6 1.4-.6h1c.3 0 .8 0 1.2 1 .5 1.2 1.6 4.1 1.7 4.4.1.3.2.6 0 1-.2.4-.3.6-.5.9-.3.3-.5.6-.8.8-.3.3-.5.6-.2 1.1.3.5 1.3 2.2 2.9 3.6 2 1.8 3.6 2.3 4.1 2.6.5.2.8.2 1.1-.1.3-.3 1.3-1.5 1.6-2 .3-.5.6-.4 1-.3.4.2 2.6 1.2 3.1 1.4.5.2.8.3 1 .5.1.5.1 1.1-.4 2.1Z"/></svg></div>
+          <div><strong>WhatsApp / Phone</strong><span>Available on request</span></div>
+        </div>
+        <div class="contact-card">
+          <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.2-9.5-9.4C.7 8.4 2 4.6 5.6 3.7 8 3.1 10 4.4 12 6.5c2-2.1 4-3.4 6.4-2.8 3.6.9 4.9 4.7 3.1 7.9C19 15.8 12 21 12 21Z"/></svg></div>
+          <div><strong>Based in</strong><span>Egypt</span></div>
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="GitHub" title="GitHub — add profile URL"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.4-3.87-1.4-.53-1.32-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.2-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.2 1.18a11 11 0 0 1 5.83 0c2.22-1.5 3.19-1.18 3.19-1.18.64 1.6.24 2.78.12 3.06.75.81 1.2 1.83 1.2 3.09 0 4.42-2.7 5.39-5.26 5.67.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12c0-6.36-5.15-11.5-11.5-11.5Z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="LinkedIn" title="LinkedIn — add profile URL"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM.5 8.98h8.9V23H.5V8.98ZM13.5 8.98h8.53v1.98h.12c.4-.76 2-2.28 4.63-2.28 4.95 0 5.4 2.63 5.4 6.06V23h-8V15.5c0-1.79-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.97V23h-5.3V8.98Z" transform="translate(-.5 0) scale(.9)"/></svg></a>
+          <a href="#" class="social-btn" aria-label="WhatsApp" title="WhatsApp — add link"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.6 5.6.6 11.9c0 2.1.6 4.1 1.6 5.8L.5 23.5l5.9-1.6a11.4 11.4 0 0 0 5.6 1.4c6.3 0 11.4-5.1 11.4-11.4S18.3.5 12 .5Z" opacity=".15"/><path d="M17 14.2c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.5-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5 0-.1-.6-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1.1 2.8 1.2 3c.1.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.4Z"/></svg></a>
+        </div>
+      </div>
+
+      <form class="form reveal" id="contactForm">
+        <div class="form-row">
+          <div class="field"><label for="cName">Name</label><input id="cName" type="text" required placeholder="Your name"></div>
+          <div class="field"><label for="cEmail">Email</label><input id="cEmail" type="email" required placeholder="you@example.com"></div>
+        </div>
+        <div class="field"><label for="cSubject">Subject</label><input id="cSubject" type="text" placeholder="What's this about?"></div>
+        <div class="field"><label for="cMsg">Message</label><textarea id="cMsg" required placeholder="Tell me about the project or opportunity…"></textarea></div>
+        <button type="submit" class="btn btn-primary" style="justify-self:start">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#home" class="brand" style="margin-bottom:14px">
+          <span class="brand-mark">GM</span>
+          <span class="brand-text"><strong>Gamil Mamdouh</strong><span>EMBEDDED · ROBOTICS · WEB</span></span>
+        </a>
+        <p style="color:var(--muted);font-size:.85rem;max-width:36ch">Embedded Systems &amp; Robotics learner and web developer, building from sensor to screen.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Gamil Mamdouh Elgamil Asham. All rights reserved.</span>
+      <button id="adminFooterLink" type="button">Content editor ↗</button>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     PROJECT MODAL
+     ============================================================ -->
+<div class="modal-overlay" id="projectModal">
+  <div class="modal">
+    <div class="modal-media" id="modalMedia">
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     CONTENT EDITOR (lightweight, session-based CMS)
+     ============================================================ -->
+<button class="admin-fab" id="adminFab" title="Content editor" aria-label="Open content editor">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+</button>
+
+<div class="admin-overlay" id="adminOverlay">
+  <div class="admin-panel">
+    <h3>Content editor</h3>
+    <p class="sub">Add, edit, feature or remove Projects and Certificates for this session.</p>
+    <div class="admin-note" id="adminGate">
+      <div class="field" style="margin-bottom:12px">
+        <label for="adminPass">Passphrase</label>
+        <input id="adminPass" type="password" placeholder="Enter passphrase">
+      </div>
+      <button class="btn btn-primary btn-sm" id="adminUnlock">Unlock editor</button>
+      <p style="margin-top:12px;font-size:.76rem">Default passphrase: <code class="mono">gamil-admin</code> — change it in the script before publishing. This is a soft, client-side gate only, not real authentication.</p>
+    </div>
+
+    <div id="adminContent" style="display:none">
+      <div class="admin-tabs">
+        <button class="admin-tab active" data-tab="projects">Projects</button>
+        <button class="admin-tab" data-tab="certificates">Certificates</button>
+      </div>
+
+      <div id="adminProjects">
+        <div class="admin-list" id="adminProjectsList"></div>
+        <button class="btn btn-ghost btn-sm" id="addProjectBtn">+ Add project</button>
+      </div>
+
+      <div id="adminCertificates" style="display:none">
+        <div class="admin-list" id="adminCertList"></div>
+        <button class="btn btn-ghost btn-sm" id="addCertBtn">+ Add certificate</button>
+      </div>
+
+      <div class="admin-note" style="margin-top:20px">
+        This is a static, single-file portfolio with no backend or database, so edits made here live only in this browser session and reset on reload. Click <strong>Export data</strong> to copy the updated content as JSON, then paste it into the <code class="mono">DATA</code> object near the top of the <code class="mono">&lt;script&gt;</code> tag to make changes permanent. A real multi-user CMS with persistent storage, auth, and file uploads would need a backend and database.
+      </div>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <button class="btn btn-primary btn-sm" id="exportDataBtn">Export data (JSON)</button>
+        <button class="btn btn-ghost btn-sm" id="closeAdminBtn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script>
+/* ============================================================
+   DATA — single source of truth.
+   Edit these arrays/objects directly to update the DEFAULT/
+   FALLBACK content (this is used until the JSONBin data loads,
+   and as a fallback if the bin can't be reached).
+   Only information actually provided has been included;
+   fields left as placeholders are clearly marked.
+   ============================================================ */
+const DATA = {
+  profile:{
+    name:"Gamil Mamdouh Elgamil Asham",
+    shortName:"Gamil Mamdouh",
+    email:"your.email@example.com" // TODO: replace with real email
+  },
+
+  education:[
+    {
+      id:"stem",
+      title:"STEM Schools",
+      org:"STEM Education Track",
+      duration:"Ongoing",
+      featured:false,
+      body:"Studying at STEM Schools, working on practical engineering, embedded systems, electronics, programming, and scientific projects rather than purely theoretical coursework.",
+      tags:["Engineering","Electronics","Programming","Scientific Projects"]
+    },
+    {
+      id:"deci",
+      title:"Digital Egypt Cubs Initiative (DECI)",
+      org:"Embedded Systems & Robotics Specialization",
+      duration:"3 Years",
+      featured:true,
+      body:"A three-year, practical technical training track specializing in Embedded Systems & Robotics — covering embedded systems, robotics, electronics, sensors, microcontrollers, programming, hardware and prototyping. A sustained, hands-on program rather than a short online course.",
+      tags:["Embedded Systems","Robotics","Electronics","Sensors","Microcontrollers","Prototyping"]
+    },
+    {
+      id:"continuous",
+      title:"Continuous Learning",
+      org:"Self-directed & project-based",
+      duration:"Ongoing",
+      featured:false,
+      body:"Extending embedded and robotics fundamentals into IoT, automation, and full web development — building complete projects end to end, from sensor to interface.",
+      tags:["IoT","Automation","Web Development"]
+    }
+  ],
+
+  skills:[
+    {
+      key:"embedded", name:"Embedded Systems", accent:"var(--electric-blue)",
+      desc:"Low-level, sensor and microcontroller-driven development.",
+      items:["ESP32","Microcontrollers","Sensors","Hall Effect Sensors","Electronics","IoT","Embedded Programming","UART","I2C","SPI","PWM","ADC"]
+    },
+    {
+      key:"robotics", name:"Robotics", accent:"var(--teal)",
+      desc:"Turning sensing into physical action and control.",
+      items:["Robotics","Sensors","Actuators","Control","Automation","Prototyping"]
+    },
+    {
+      key:"programming", name:"Programming", accent:"var(--indigo)",
+      desc:"Languages used across embedded and web projects.",
+      items:["Python","C++","JavaScript","MicroPython","HTML","CSS"]
+    },
+    {
+      key:"web", name:"Web Development", accent:"var(--pink)",
+      desc:"Building the interfaces and platforms on top of hardware projects.",
+      items:["Frontend","Backend","Responsive Design","Database Applications","UI/UX"]
+    }
+  ],
+
+  services:[
+    {name:"Embedded Systems Development", desc:"Sensor and microcontroller-based builds, from prototype to working device."},
+    {name:"Robotics & Automation", desc:"Control logic and automation that turns sensor data into physical action."},
+    {name:"IoT Solutions", desc:"Connecting embedded devices so their data is usable in real time."},
+    {name:"Web Application Development", desc:"Frontend and backend interfaces, dashboards, and platforms."}
+  ],
+
+  projects:[
+    {
+      id:"voltmeter",
+      title:"Digital Voltmeter",
+      category:"Embedded",
+      featured:false,
+      summary:"An early embedded systems build that measures and displays voltage digitally.",
+      details:"Built during my early Embedded Systems and Electronics learning, this project measures voltage and displays the reading digitally, forming an early foundation in analog-to-digital measurement and embedded display logic.",
+      tags:["Embedded","Electronics","ADC"]
+    },
+    {
+      id:"smartcart",
+      title:"Smart Cart System",
+      category:"IoT",
+      featured:false,
+      summary:"A smart cart system designed for malls and public places.",
+      details:"A complete smart cart system intended for use in malls and public places, combining embedded hardware with practical tracking and automation concepts for retail environments.",
+      tags:["Embedded","IoT","Automation"]
+    },
+    {
+      id:"rollmeter",
+      title:"Rollmeter",
+      category:"Robotics",
+      featured:true,
+      summary:"A digital measuring wheel that converts wheel rotation into surface distance.",
+      details:"Rollmeter is a digital measuring wheel built with an ESP32 and Hall Effect sensors and magnets mounted on the wheel. As the wheel rotates, the Hall Effect sensors detect each magnet passing by, and the embedded program converts the number of detected rotations into a measured surface distance.",
+      tags:["ESP32","Hall Effect Sensors","Embedded Programming","Robotics"]
+    },
+    {
+      id:"irrigation",
+      title:"Smart Irrigation System",
+      category:"IoT",
+      featured:true,
+      summary:"An intelligent irrigation system monitoring soil and environmental conditions.",
+      details:"An intelligent irrigation system that monitors soil moisture, temperature, soil dryness, and soil mineral-related measurements. It brings together embedded systems, IoT, smart agriculture, and automation to inform irrigation decisions from real sensor data.",
+      tags:["Embedded Systems","IoT","Smart Agriculture","Automation"]
+    },
+    {
+      id:"examplatform",
+      title:"Online Examination Platform",
+      category:"Web",
+      featured:false,
+      summary:"A web-based examination platform for teachers and students.",
+      details:"A web-based examination platform built for teachers and students, covering online exams, data management, teacher and student functionality, and a responsive UI end to end.",
+      tags:["Web Development","Frontend","Backend","Database"]
+    }
+  ],
+
+  // Certificate library — intentionally empty. The gallery below
+  // (search, filter, pagination, empty state) is fully built to
+  // scale past 34+ entries; add objects shaped like the example
+  // below via the content editor or directly in this array:
+  // { id:"cert-1", name:"Certificate Name", issuer:"Issuer", date:"2024",
+  //   category:"Embedded Systems", credentialId:"", verifyUrl:"", featured:false }
+  certificates:[],
+
+  stats:[
+    {value:"3", suffix:"", label:"YEARS · DECI EMBEDDED & ROBOTICS"},
+    {value:"5", suffix:"+", label:"HANDS-ON PROJECTS"},
+    {value:"2", suffix:"", label:"CORE ENGINEERING DISCIPLINES"},
+    {value:"12", suffix:"+", label:"TECHNOLOGIES USED"}
+  ]
+};
+
+const CERTS_PAGE_SIZE = 6;
+let certPage = 1;
+let activeProjectFilter = "All";
+let activeCertFilter = "All";
+
+/* ============================================================
+   JSONBIN.IO INTEGRATION
+   ------------------------------------------------------------
+   Bin ID: 6a7c5facda38895dfeda4195
+
+   READS (page load, all visitors):
+     GET https://api.jsonbin.io/v3/b/<BIN_ID>/latest
+     JSONBin requires an X-Master-Key or X-Access-Key on every
+     read — even for a Public bin — so a *read-only* Access Key
+     is hard-coded below. Create it from your JSONBin dashboard →
+     API Keys → Access Keys, and grant it ONLY "Read" permission,
+     scoped to this bin. Because it can't write or touch anything
+     else, it's safe to ship in public JS.
+
+   WRITES (saving edits from the admin panel):
+     PUT https://api.jsonbin.io/v3/b/<BIN_ID>
+     Requires a key with "Update" permission. Use a SEPARATE
+     Access Key scoped to Update-only on this one bin — never
+     your Master Key, which has full access to every bin on
+     your account and should never run in browser JS. The admin
+     panel asks for this key at runtime and keeps it only in a
+     JS variable for the session (never written to this file),
+     though it's still visible in the Network tab while it's
+     being used — that's unavoidable for any client-side write,
+     which is exactly why it must be a narrowly-scoped key.
+   ============================================================ */
+const JSONBIN_BIN_ID   = '6a7c5facda38895dfeda4195';
+const JSONBIN_URL      = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+
+// Read-only Access Key — safe to hard-code, scoped to Read-only on this bin.
+const JSONBIN_READ_KEY = 'PASTE_YOUR_READ_ONLY_ACCESS_KEY_HERE';
+
+// Write key — Access Key scoped to Update-only on this bin, entered at
+// runtime from the admin panel. Never hard-code a key that can write.
+let jsonbinWriteKey = '';
+
+async function loadDataFromBin(){
+  try{
+    const res = await fetch(JSONBIN_URL + '/latest', {
+      headers: {
+        'X-Access-Key': JSONBIN_READ_KEY,
+        'X-Bin-Meta': 'false'
+      }
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const remote = await res.json();
+    if(remote && typeof remote === 'object'){
+      ['profile','education','skills','services','projects','certificates','stats'].forEach(key=>{
+        if(remote[key] !== undefined) DATA[key] = remote[key];
+      });
+    }
+    return true;
+  }catch(err){
+    console.warn('JSONBin: could not load remote data, using built-in defaults.', err);
+    return false;
+  }
+}
+
+async function saveDataToBin(){
+  if(!jsonbinWriteKey){
+    toast('Paste your JSONBin Access Key in the admin panel first.');
+    return false;
+  }
+  try{
+    const payload = {
+      profile: DATA.profile,
+      education: DATA.education,
+      skills: DATA.skills,
+      services: DATA.services,
+      projects: DATA.projects,
+      certificates: DATA.certificates,
+      stats: DATA.stats
+    };
+    const res = await fetch(JSONBIN_URL, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Access-Key': jsonbinWriteKey,
+        'X-Bin-Meta': 'false'
+      },
+      body: JSON.stringify(payload)
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    toast('Saved to JSONBin ✅');
+    return true;
+  }catch(err){
+    console.error('JSONBin save failed', err);
+    toast('Could not save — check your Access Key and connection.');
+    return false;
+  }
+}
+
+/* ============================================================
+   UTIL
+   ============================================================ */
+function el(tag, cls, html){
+  const e = document.createElement(tag);
+  if(cls) e.className = cls;
+  if(html !== undefined) e.innerHTML = html;
+  return e;
+}
+function toast(msg){
+  const wrap = document.getElementById('toastWrap');
+  const t = el('div','toast', msg);
+  wrap.appendChild(t);
+  setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateY(6px)'; t.style.transition='.3s'; setTimeout(()=>t.remove(),300); }, 3200);
+}
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ============================================================
+   NAV — active link + mobile menu + rail
+   ============================================================ */
+const sections = ['home','about','journey','skills','projects','services','certificates','achievements','testimonials','contact'];
+const railLabels = {home:'Home',about:'About',journey:'Journey',skills:'Skills',projects:'Projects',services:'Services',certificates:'Certificates',achievements:'Stats',testimonials:'Testimonials',contact:'Contact'};
+
+function buildRail(){
+  const rail = document.getElementById('rail');
+  sections.forEach(id=>{
+    const node = el('a','rail-node');
+    node.href = '#'+id;
+    node.dataset.id = id;
+    node.innerHTML = `<span class="dot"></span><span class="rail-label">${railLabels[id]}</span>`;
+    rail.appendChild(node);
+  });
+}
+buildRail();
+
+const navAnchors = document.querySelectorAll('[data-nav]');
+const railNodes = document.querySelectorAll('.rail-node');
+
+function setActive(id){
+  navAnchors.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === '#'+id));
+  railNodes.forEach(n=> n.classList.toggle('active', n.dataset.id === id));
+}
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) setActive(entry.target.id);
+  });
+}, {rootMargin:'-40% 0px -50% 0px', threshold:0});
+sections.forEach(id=>{ const s = document.getElementById(id); if(s) io.observe(s); });
+
+const navToggle = document.getElementById('navToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+navToggle.addEventListener('click', ()=>{
+  const open = mobileMenu.classList.toggle('open');
+  navToggle.classList.toggle('open', open);
+  navToggle.setAttribute('aria-expanded', open);
+});
+document.querySelectorAll('#mobileMenu a').forEach(a=> a.addEventListener('click', ()=>{
+  mobileMenu.classList.remove('open'); navToggle.classList.remove('open');
+}));
+
+/* ============================================================
+   REVEAL ON SCROLL
+   ============================================================ */
+const revealItems = document.querySelectorAll('.reveal');
+if(reduceMotion){
+  revealItems.forEach(i=>i.classList.add('in'));
+} else {
+  const rio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){ entry.target.classList.add('in'); rio.unobserve(entry.target); }
+    });
+  }, {threshold:.12});
+  revealItems.forEach(i=> rio.observe(i));
+}
+
+/* ============================================================
+   HERO PCB PULSE DOTS
+   ============================================================ */
+if(!reduceMotion){
+  const pulseGroup = document.getElementById('pulseDots');
+  // traveling signal dots along the PCB traces, via SMIL animateMotion
+  const motionPaths = ["M200 90 L140 140 H90","M200 90 L260 140 H310","M200 310 L140 260 H90","M200 310 L260 260 H310"];
+  motionPaths.forEach((d,i)=>{
+    const dot = document.createElementNS('http://www.w3.org/2000/svg','circle');
+    dot.setAttribute('r','3'); dot.setAttribute('fill','#00E5FF');
+    const anim = document.createElementNS('http://www.w3.org/2000/svg','animateMotion');
+    anim.setAttribute('dur', (3 + i*0.6)+'s');
+    anim.setAttribute('repeatCount','indefinite');
+    anim.setAttribute('path', d);
+    dot.appendChild(anim);
+    pulseGroup.appendChild(dot);
+  });
+}
+
+/* ============================================================
+   RENDER: EDUCATION TIMELINE
+   ============================================================ */
+function renderEducation(){
+  const wrap = document.getElementById('timelineList');
+  wrap.innerHTML = '';
+  DATA.education.forEach(item=>{
+    const node = el('div', 'tl-item reveal' + (item.featured ? ' featured' : ''));
+    node.innerHTML = `
+      <div class="tl-head"><h3>${item.title}</h3><span class="tl-duration">${item.duration}</span></div>
+      <div class="tl-org">${item.org}</div>
+      <div class="tl-body"><p>${item.body}</p>
+      <div class="tl-tags">${item.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div></div>`;
+    wrap.appendChild(node);
+  });
+  if(!reduceMotion){
+    document.querySelectorAll('#timelineList .reveal').forEach(i=>{
+      const rio2 = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('in'); rio2.unobserve(entry.target);} });
+      },{threshold:.15});
+      rio2.observe(i);
+    });
+  } else {
+    document.querySelectorAll('#timelineList .reveal').forEach(i=>i.classList.add('in'));
+  }
+}
+
+/* ============================================================
+   RENDER: SKILLS
+   ============================================================ */
+const skillIcons = {
+  embedded:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>',
+  robotics:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M9 4h6M9 14h.01M15 14h.01"/></svg>',
+  programming:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg>',
+  web:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18Z"/></svg>'
+};
+function renderSkills(){
+  const grid = document.getElementById('skillsGrid');
+  grid.innerHTML = '';
+  DATA.skills.forEach((s,i)=>{
+    const card = el('div','skill-card reveal');
+    card.style.setProperty('--accent', s.accent);
+    card.style.setProperty('--i', i);
+    card.innerHTML = `
+      <div class="sk-icon">${skillIcons[s.key] || ''}</div>
+      <h3>${s.name}</h3>
+      <p class="sk-desc">${s.desc}</p>
+      <div class="sk-tags">${s.items.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`;
+    grid.appendChild(card);
+  });
+  attachReveal('#skillsGrid .reveal');
+}
+
+/* ============================================================
+   RENDER: SERVICES
+   ============================================================ */
+function renderServices(){
+  const grid = document.getElementById('servicesGrid');
+  grid.innerHTML = '';
+  DATA.services.forEach((s,i)=>{
+    const card = el('div','service-card reveal');
+    card.innerHTML = `<span class="num mono">0${i+1}</span><h3>${s.name}</h3><p>${s.desc}</p>`;
+    grid.appendChild(card);
+  });
+  attachReveal('#servicesGrid .reveal');
+}
+
+/* ============================================================
+   RENDER: STATS (count-up)
+   ============================================================ */
+function renderStats(){
+  const wrap = document.getElementById('statsStrip');
+  wrap.innerHTML = '';
+  DATA.stats.forEach(s=>{
+    const stat = el('div','stat');
+    stat.innerHTML = `<strong data-target="${s.value}" data-suffix="${s.suffix}">0${s.suffix}</strong><span>${s.label}</span>`;
+    wrap.appendChild(stat);
+  });
+  const statEls = wrap.querySelectorAll('strong');
+  const cio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        animateCount(entry.target);
+        cio.unobserve(entry.target);
+      }
+    });
+  },{threshold:.4});
+  statEls.forEach(s=>cio.observe(s));
+}
+function animateCount(node){
+  const target = parseInt(node.dataset.target,10);
+  const suffix = node.dataset.suffix || '';
+  if(reduceMotion){ node.textContent = target+suffix; return; }
+  let cur = 0;
+  const dur = 1200;
+  const start = performance.now();
+  function tick(now){
+    const p = Math.min(1,(now-start)/dur);
+    cur = Math.floor(p * target);
+    node.textContent = cur + suffix;
+    if(p<1) requestAnimationFrame(tick); else node.textContent = target+suffix;
+  }
+  requestAnimationFrame(tick);
+}
+
+/* ============================================================
+   RENDER: PROJECTS (filter + search + modal)
+   ============================================================ */
+const projectIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>';
+
+function renderProjectFilters(){
+  const cats = ["All", ...new Set(DATA.projects.map(p=>p.category))];
+  const wrap = document.getElementById('projectFilters');
+  wrap.innerHTML = '';
+  cats.forEach(c=>{
+    const btn = el('button','filter-btn'+(c===activeProjectFilter?' active':''), c);
+    btn.addEventListener('click', ()=>{ activeProjectFilter = c; renderProjectFilters(); renderProjects(); });
+    wrap.appendChild(btn);
+  });
+}
+
+function renderProjects(){
+  const grid = document.getElementById('projectsGrid');
+  const empty = document.getElementById('projectsEmpty');
+  const q = document.getElementById('projectSearch').value.trim().toLowerCase();
+  grid.innerHTML = '';
+  const filtered = DATA.projects.filter(p=>{
+    const matchesCat = activeProjectFilter === 'All' || p.category === activeProjectFilter;
+    const hay = (p.title+' '+p.summary+' '+p.tags.join(' ')).toLowerCase();
+    const matchesQ = !q || hay.includes(q);
+    return matchesCat && matchesQ;
+  });
+  empty.style.display = filtered.length ? 'none' : 'block';
+  filtered.forEach((p,i)=>{
+    const card = el('article','project-card reveal in');
+    card.innerHTML = `
+      <div class="project-media">
+        ${p.featured ? '<span class="badge-featured">★ Featured</span>' : ''}
+        <span class="badge-cat">${p.category}</span>
+        ${projectIcon}
+      </div>
+      <div class="project-body">
+        <h3>${p.title}</h3>
+        <p>${p.summary}</p>
+        <div class="project-tags">${p.tags.slice(0,3).map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+        <div class="project-foot">
+          <span class="project-link">View details
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
+      </div>`;
+    card.addEventListener('click', ()=>openProjectModal(p));
+    grid.appendChild(card);
+  });
+}
+
+function openProjectModal(p){
+  document.getElementById('modalMedia').innerHTML = `
+    <button class="modal-close" id="modalClose2" aria-label="Close">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>${projectIcon}`;
+  document.getElementById('modalBody').innerHTML = `
+    <h3>${p.title}</h3>
+    <div class="project-tags">${p.featured?'<span class="chip" style="color:var(--electric-blue-bright);border-color:var(--electric-blue-bright)">★ Featured</span>':''}<span class="chip">${p.category}</span></div>
+    <p>${p.details}</p>
+    <div class="modal-section-label">Technologies &amp; Concepts</div>
+    <div class="project-tags">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`;
+  const overlay = document.getElementById('projectModal');
+  overlay.classList.add('open');
+  document.getElementById('modalClose2').addEventListener('click', closeModal);
+}
+function closeModal(){ document.getElementById('projectModal').classList.remove('open'); }
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('projectModal').addEventListener('click', (e)=>{ if(e.target.id==='projectModal') closeModal(); });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeModal(); closeAdmin(); } });
+document.getElementById('projectSearch').addEventListener('input', renderProjects);
+
+/* ============================================================
+   RENDER: CERTIFICATES (search + filter + pagination + empty)
+   ============================================================ */
+function renderCertFilters(){
+  const cats = ["All", ...new Set(DATA.certificates.map(c=>c.category).filter(Boolean))];
+  const wrap = document.getElementById('certFilters');
+  wrap.innerHTML = '';
+  if(DATA.certificates.length === 0){ wrap.innerHTML=''; return; }
+  cats.forEach(c=>{
+    const btn = el('button','filter-btn'+(c===activeCertFilter?' active':''), c);
+    btn.addEventListener('click', ()=>{ activeCertFilter = c; certPage = 1; renderCertFilters(); renderCertificates(); });
+    wrap.appendChild(btn);
+  });
+}
+
+function renderCertificates(){
+  const grid = document.getElementById('certGrid');
+  const empty = document.getElementById('certEmpty');
+  const loadWrap = document.getElementById('certLoadMoreWrap');
+  const q = document.getElementById('certSearch').value.trim().toLowerCase();
+  grid.innerHTML = '';
+
+  if(DATA.certificates.length === 0){
+    empty.style.display = 'block';
+    document.getElementById('certEmptyTitle').textContent = 'Certificates coming soon';
+    document.getElementById('certEmptyBody').textContent = 'The certificate library is being catalogued and will appear here — this section already supports search, filtering and pagination once it is populated. Add entries from the content editor (bottom-left icon).';
+    loadWrap.style.display = 'none';
+    return;
+  }
+
+  const filtered = DATA.certificates.filter(c=>{
+    const matchesCat = activeCertFilter === 'All' || c.category === activeCertFilter;
+    const hay = (c.name+' '+c.issuer+' '+(c.category||'')).toLowerCase();
+    const matchesQ = !q || hay.includes(q);
+    return matchesCat && matchesQ;
+  });
+
+  if(filtered.length === 0){
+    empty.style.display = 'block';
+    document.getElementById('certEmptyTitle').textContent = 'No certificates match that search';
+    document.getElementById('certEmptyBody').textContent = 'Try a different keyword or clear the filters above.';
+    loadWrap.style.display = 'none';
+    return;
+  }
+  empty.style.display = 'none';
+
+  const visible = filtered.slice(0, certPage * CERTS_PAGE_SIZE);
+  visible.forEach(c=>{
+    const card = el('div','cert-card reveal in');
+    card.innerHTML = `
+      <div class="cert-top">
+        <div class="cert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 15c3.3 0 6-2.7 6-6s-2.7-6-6-6-6 2.7-6 6 2.7 6 6 6z"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg></div>
+        ${c.featured ? '<span class="badge-featured" style="position:static">★ Featured</span>' : ''}
+      </div>
+      <div><h4>${c.name}</h4><div class="cert-issuer">${c.issuer||''}</div></div>
+      <div class="cert-meta">
+        <span>${c.date||''}${c.category ? ' · '+c.category : ''}</span>
+        <div class="cert-actions">${c.verifyUrl ? `<a class="btn btn-ghost btn-sm" href="${c.verifyUrl}" target="_blank" rel="noopener">Verify</a>` : ''}</div>
+      </div>`;
+    grid.appendChild(card);
+  });
+
+  loadWrap.style.display = filtered.length > visible.length ? 'flex' : 'none';
+}
+document.getElementById('certSearch').addEventListener('input', ()=>{ certPage=1; renderCertificates(); });
+document.getElementById('certLoadMore').addEventListener('click', ()=>{ certPage++; renderCertificates(); });
+
+function attachReveal(selector){
+  const items = document.querySelectorAll(selector);
+  if(reduceMotion){ items.forEach(i=>i.classList.add('in')); return; }
+  const rio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('in'); rio.unobserve(entry.target);} });
+  },{threshold:.12});
+  items.forEach(i=>rio.observe(i));
+}
+
+/* ============================================================
+   CONTACT FORM (front-end only — no backend attached)
+   ============================================================ */
+document.getElementById('contactEmail').textContent = DATA.profile.email;
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('cName').value.trim();
+  const email = document.getElementById('cEmail').value.trim();
+  const subject = document.getElementById('cSubject').value.trim() || 'Portfolio contact';
+  const msg = document.getElementById('cMsg').value.trim();
+  if(!name || !email || !msg){ toast('Please fill in your name, email and message.'); return; }
+  const mailto = `mailto:${DATA.profile.email}?subject=${encodeURIComponent(subject+' — from '+name)}&body=${encodeURIComponent(msg+'\n\nReply to: '+email)}`;
+  window.location.href = mailto;
+  toast('Opening your email client to send the message…');
+});
+
+/* ============================================================
+   CONTENT EDITOR (lightweight, in-memory session CMS)
+   Now also syncs with JSONBin.io — see the "JSONBIN.IO
+   INTEGRATION" block near the top of this file.
+   ============================================================ */
+const ADMIN_PASSPHRASE = 'gamil-admin'; // change before publishing
+let adminUnlocked = false;
+let activeAdminTab = 'projects';
+
+const adminFab = document.getElementById('adminFab');
+const adminOverlay = document.getElementById('adminOverlay');
+const adminFooterLink = document.getElementById('adminFooterLink');
+
+function openAdmin(){ adminOverlay.classList.add('open'); }
+function closeAdmin(){ adminOverlay.classList.remove('open'); }
+adminFab.addEventListener('click', openAdmin);
+adminFooterLink.addEventListener('click', openAdmin);
+document.getElementById('closeAdminBtn').addEventListener('click', closeAdmin);
+adminOverlay.addEventListener('click', (e)=>{ if(e.target.id==='adminOverlay') closeAdmin(); });
+
+// Injects a small "JSONBin Access Key" field + "Save to Cloud now"
+// button at the top of the admin panel, once, the first time the
+// panel is unlocked. Nothing is written to this file/localStorage —
+// the key lives only in the jsonbinWriteKey variable for this tab.
+function ensureJsonbinKeyUI(){
+  if(document.getElementById('jsonbinKeyRow')) return;
+  const adminContent = document.getElementById('adminContent');
+  if(!adminContent) return;
+  const row = el('div','admin-item');
+  row.id = 'jsonbinKeyRow';
+  row.style.flexDirection = 'column';
+  row.style.alignItems = 'stretch';
+  row.style.gap = '8px';
+  row.innerHTML = `
+    <div><strong>JSONBin Access Key</strong><span>Use a key scoped to Update-only on this bin — never your Master Key. Only needed to save; never written to this file.</span></div>
+    <input type="password" id="jsonbinKeyInput" placeholder="Paste your JSONBin Access Key (Update permission)"
+      style="width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:transparent;color:inherit;">
+    <div class="admin-item-actions" style="justify-content:flex-end;gap:8px;">
+      <button id="jsonbinKeySave" class="btn btn-ghost btn-sm" type="button">Remember for this session</button>
+      <button id="jsonbinSyncNow" class="btn btn-ghost btn-sm" type="button">Save to Cloud now</button>
+    </div>`;
+  adminContent.insertBefore(row, adminContent.firstChild);
+  document.getElementById('jsonbinKeySave').addEventListener('click', ()=>{
+    jsonbinWriteKey = document.getElementById('jsonbinKeyInput').value.trim();
+    toast(jsonbinWriteKey ? 'Access Key set for this session.' : 'Access Key cleared.');
+  });
+  document.getElementById('jsonbinSyncNow').addEventListener('click', ()=>{
+    const typed = document.getElementById('jsonbinKeyInput').value.trim();
+    if(typed) jsonbinWriteKey = typed;
+    saveDataToBin();
+  });
+}
+
+document.getElementById('adminUnlock').addEventListener('click', ()=>{
+  const val = document.getElementById('adminPass').value;
+  if(val === ADMIN_PASSPHRASE){
+    adminUnlocked = true;
+    document.getElementById('adminGate').style.display = 'none';
+    document.getElementById('adminContent').style.display = 'block';
+    ensureJsonbinKeyUI();
+    renderAdminLists();
+    toast('Editor unlocked for this session.');
+  } else {
+    toast('Incorrect passphrase.');
+  }
+});
+
+document.querySelectorAll('.admin-tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    activeAdminTab = tab.dataset.tab;
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.toggle('active', t===tab));
+    document.getElementById('adminProjects').style.display = activeAdminTab==='projects' ? 'block':'none';
+    document.getElementById('adminCertificates').style.display = activeAdminTab==='certificates' ? 'block':'none';
+  });
+});
+
+function renderAdminLists(){
+  const pList = document.getElementById('adminProjectsList');
+  pList.innerHTML = '';
+  DATA.projects.forEach(p=>{
+    const item = el('div','admin-item');
+    item.innerHTML = `<div><strong>${p.title}</strong><span>${p.category}${p.featured?' · Featured':''}</span></div>
+      <div class="admin-item-actions">
+        <button data-action="feature" title="Toggle featured"><svg width="14" height="14" viewBox="0 0 24 24" fill="${p.featured?'currentColor':'none'}" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 6.9L12 17.8 5.7 21l1.2-6.9-5-4.9 7-1L12 2Z"/></svg></button>
+        <button data-action="delete" title="Delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></button>
+      </div>`;
+    item.querySelector('[data-action="feature"]').addEventListener('click', ()=>{
+      p.featured=!p.featured; renderAdminLists(); renderProjects();
+      toast('Updated “'+p.title+'”.'); saveDataToBin();
+    });
+    item.querySelector('[data-action="delete"]').addEventListener('click', ()=>{
+      DATA.projects = DATA.projects.filter(x=>x.id!==p.id);
+      renderAdminLists(); renderProjectFilters(); renderProjects();
+      toast('Removed “'+p.title+'”.'); saveDataToBin();
+    });
+    pList.appendChild(item);
+  });
+
+  const cList = document.getElementById('adminCertList');
+  cList.innerHTML = '';
+  if(DATA.certificates.length === 0){
+    cList.innerHTML = '<p style="color:var(--muted);font-size:.85rem">No certificates yet — add the first one below.</p>';
+  }
+  DATA.certificates.forEach(c=>{
+    const item = el('div','admin-item');
+    item.innerHTML = `<div><strong>${c.name}</strong><span>${c.issuer||''} ${c.date?'· '+c.date:''}</span></div>
+      <div class="admin-item-actions">
+        <button data-action="delete" title="Delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></button>
+      </div>`;
+    item.querySelector('[data-action="delete"]').addEventListener('click', ()=>{
+      DATA.certificates = DATA.certificates.filter(x=>x.id!==c.id);
+      renderAdminLists(); renderCertFilters(); renderCertificates();
+      toast('Removed “'+c.name+'”.'); saveDataToBin();
+    });
+    cList.appendChild(item);
+  });
+}
+
+document.getElementById('addProjectBtn').addEventListener('click', ()=>{
+  const title = prompt('Project title:'); if(!title) return;
+  const category = prompt('Category (Embedded / Robotics / IoT / Web):','Embedded') || 'Embedded';
+  const summary = prompt('Short summary:','') || '';
+  const details = prompt('Full details:', summary) || summary;
+  const tags = (prompt('Tags, comma-separated:','') || '').split(',').map(t=>t.trim()).filter(Boolean);
+  DATA.projects.push({ id:'p-'+Date.now(), title, category, featured:false, summary, details, tags });
+  renderAdminLists(); renderProjectFilters(); renderProjects();
+  toast('Added project “'+title+'”.');
+  saveDataToBin();
+});
+
+document.getElementById('addCertBtn').addEventListener('click', ()=>{
+  const name = prompt('Certificate name:'); if(!name) return;
+  const issuer = prompt('Issuer:','') || '';
+  const date = prompt('Date:','') || '';
+  const category = prompt('Category:','') || '';
+  const verifyUrl = prompt('Verification URL (optional):','') || '';
+  DATA.certificates.push({ id:'c-'+Date.now(), name, issuer, date, category, credentialId:'', verifyUrl, featured:false });
+  renderAdminLists(); renderCertFilters(); renderCertificates();
+  toast('Added certificate “'+name+'”.');
+  saveDataToBin();
+});
+
+document.getElementById('exportDataBtn').addEventListener('click', ()=>{
+  const json = JSON.stringify({projects:DATA.projects, certificates:DATA.certificates}, null, 2);
+  navigator.clipboard && navigator.clipboard.writeText(json).then(()=>{
+    toast('Updated data copied to clipboard as JSON.');
+  }).catch(()=>{
+    console.log(json);
+    toast('Could not copy automatically — data logged to the console.');
+  });
+});
+
+/* ============================================================
+   INIT
+   Loads the latest data from JSONBin (if reachable/public) BEFORE
+   the first render, then falls back to the built-in DATA above
+   automatically if the bin can't be read.
+   ============================================================ */
+(async function init(){
+  document.getElementById('year').textContent = new Date().getFullYear();
+  await loadDataFromBin();
+  document.getElementById('contactEmail').textContent = DATA.profile.email;
+  renderEducation();
+  renderSkills();
+  renderServices();
+  renderStats();
+  renderProjectFilters();
+  renderProjects();
+  renderCertFilters();
+  renderCertificates();
+})();
+</script>
+</body>
+</html>
