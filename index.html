@@ -569,8 +569,8 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 .footer-links a{color:var(--muted);font-size:.86rem}
 .footer-links a:hover{color:var(--electric-blue-bright)}
 .footer-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted-2);font-family:var(--font-mono);font-size:.74rem}
-.footer-bottom button{color:var(--muted-2);font-family:var(--font-mono)}
-.footer-bottom button:hover{color:var(--electric-blue)}
+.footer-bottom a.admin-link{color:var(--muted-2);font-family:var(--font-mono)}
+.footer-bottom a.admin-link:hover{color:var(--electric-blue)}
 
 /* ============================================================
    15. TOASTS
@@ -585,7 +585,10 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 @keyframes toast-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* ============================================================
-   16. ADMIN (lightweight content editor — see JS comments)
+   16. ADMIN LINK — opens the real dashboard.html (a separate file).
+   Editing no longer happens inline on this page; dashboard.html is
+   the single source of truth for content edits (see FIREBASE/JSONBIN
+   comment block near the top of the script for how they connect).
    ============================================================ */
 .admin-fab{
   position:fixed;bottom:24px;left:24px;z-index:150;width:46px;height:46px;border-radius:50%;
@@ -593,24 +596,6 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
   color:var(--muted);transition:.25s;opacity:.55;
 }
 .admin-fab:hover{opacity:1;color:var(--electric-blue-bright);border-color:var(--electric-blue)}
-.admin-overlay{position:fixed;inset:0;z-index:300;background:rgba(2,4,8,.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:24px;opacity:0;pointer-events:none;transition:.25s}
-.admin-overlay.open{opacity:1;pointer-events:auto}
-.admin-panel{background:var(--panel-2);border:1px solid var(--border-strong);border-radius:var(--radius-lg);width:100%;max-width:760px;max-height:88vh;overflow-y:auto;padding:30px}
-.admin-panel h3{margin-bottom:6px}
-.admin-panel .sub{color:var(--muted);font-size:.85rem;margin-bottom:24px}
-.admin-tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
-.admin-tab{padding:8px 14px;border-radius:8px;font-family:var(--font-mono);font-size:.76rem;border:1px solid var(--border)}
-.admin-tab.active{border-color:var(--electric-blue);color:var(--electric-blue-bright);background:rgba(0,191,255,.08)}
-.admin-list{display:grid;gap:10px;margin-bottom:20px}
-.admin-item{border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.admin-item strong{font-size:.88rem;display:block}
-.admin-item span{color:var(--muted);font-size:.76rem}
-.admin-item-actions{display:flex;gap:6px;flex:none}
-.admin-item-actions button{width:30px;height:30px;border-radius:7px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center}
-.admin-item-actions button:hover{border-color:var(--electric-blue);color:var(--electric-blue-bright)}
-.admin-note{
-  font-size:.78rem;color:var(--muted);border:1px dashed var(--border-strong);border-radius:10px;padding:14px 16px;margin-top:6px;
-}
 </style>
 </head>
 <body>
@@ -966,7 +951,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
     </div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> Gamil Mamdouh Elgamil Asham. All rights reserved.</span>
-      <button id="adminFooterLink" type="button">Content editor ↗</button>
+      <a class="admin-link mono" href="dashboard.html" target="_blank" rel="noopener">Admin dashboard ↗</a>
     </div>
   </div>
 </footer>
@@ -986,51 +971,12 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 </div>
 
 <!-- ============================================================
-     CONTENT EDITOR (lightweight, session-based CMS)
+     ADMIN LINK — opens the real dashboard (dashboard.html) in a
+     new tab. All content editing happens there now.
      ============================================================ -->
-<button class="admin-fab" id="adminFab" title="Content editor" aria-label="Open content editor">
+<a class="admin-fab" id="adminFab" href="dashboard.html" target="_blank" rel="noopener" title="Open admin dashboard" aria-label="Open admin dashboard">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-</button>
-
-<div class="admin-overlay" id="adminOverlay">
-  <div class="admin-panel">
-    <h3>Content editor</h3>
-    <p class="sub">Add, edit, feature or remove Projects and Certificates for this session.</p>
-    <div class="admin-note" id="adminGate">
-      <div class="field" style="margin-bottom:12px">
-        <label for="adminPass">Passphrase</label>
-        <input id="adminPass" type="password" placeholder="Enter passphrase">
-      </div>
-      <button class="btn btn-primary btn-sm" id="adminUnlock">Unlock editor</button>
-      <p style="margin-top:12px;font-size:.76rem">Default passphrase: <code class="mono">gamil-admin</code> — change it in the script before publishing. This is a soft, client-side gate only, not real authentication.</p>
-    </div>
-
-    <div id="adminContent" style="display:none">
-      <div class="admin-tabs">
-        <button class="admin-tab active" data-tab="projects">Projects</button>
-        <button class="admin-tab" data-tab="certificates">Certificates</button>
-      </div>
-
-      <div id="adminProjects">
-        <div class="admin-list" id="adminProjectsList"></div>
-        <button class="btn btn-ghost btn-sm" id="addProjectBtn">+ Add project</button>
-      </div>
-
-      <div id="adminCertificates" style="display:none">
-        <div class="admin-list" id="adminCertList"></div>
-        <button class="btn btn-ghost btn-sm" id="addCertBtn">+ Add certificate</button>
-      </div>
-
-      <div class="admin-note" style="margin-top:20px">
-        This is a static, single-file portfolio with no backend or database, so edits made here live only in this browser session and reset on reload. Click <strong>Export data</strong> to copy the updated content as JSON, then paste it into the <code class="mono">DATA</code> object near the top of the <code class="mono">&lt;script&gt;</code> tag to make changes permanent. A real multi-user CMS with persistent storage, auth, and file uploads would need a backend and database.
-      </div>
-      <div style="display:flex;gap:10px;margin-top:16px">
-        <button class="btn btn-primary btn-sm" id="exportDataBtn">Export data (JSON)</button>
-        <button class="btn btn-ghost btn-sm" id="closeAdminBtn">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
+</a>
 
 <div class="toast-wrap" id="toastWrap"></div>
 
@@ -1180,30 +1126,22 @@ let activeProjectFilter = "All";
 let activeCertFilter = "All";
 
 /* ============================================================
-   JSONBIN.IO INTEGRATION
+   JSONBIN.IO INTEGRATION — READ ONLY on this page
    ------------------------------------------------------------
-   Bin ID: 6a7c5facda38895dfeda4195
+   Bin ID: 6a7c5facda38895dfeda4195 (must match DEFAULT_BIN_ID in
+   dashboard.html — that file is where all writes happen now).
 
-   READS (page load, all visitors):
-     GET https://api.jsonbin.io/v3/b/<BIN_ID>/latest
-     JSONBin requires an X-Master-Key or X-Access-Key on every
-     read — even for a Public bin — so a *read-only* Access Key
-     is hard-coded below. Create it from your JSONBin dashboard →
-     API Keys → Access Keys, and grant it ONLY "Read" permission,
-     scoped to this bin. Because it can't write or touch anything
-     else, it's safe to ship in public JS.
+   GET https://api.jsonbin.io/v3/b/<BIN_ID>/latest
+   JSONBin requires an X-Master-Key or X-Access-Key on every read,
+   even for a Public bin, so a *read-only* Access Key is hard-coded
+   below. Create it from your JSONBin dashboard → API Keys → Access
+   Keys, grant it ONLY "Read" permission scoped to this bin, then
+   paste it in place of the placeholder. Because it can't write or
+   touch anything else, it's safe to ship in public JS.
 
-   WRITES (saving edits from the admin panel):
-     PUT https://api.jsonbin.io/v3/b/<BIN_ID>
-     Requires a key with "Update" permission. Use a SEPARATE
-     Access Key scoped to Update-only on this one bin — never
-     your Master Key, which has full access to every bin on
-     your account and should never run in browser JS. The admin
-     panel asks for this key at runtime and keeps it only in a
-     JS variable for the session (never written to this file),
-     though it's still visible in the Network tab while it's
-     being used — that's unavoidable for any client-side write,
-     which is exactly why it must be a narrowly-scoped key.
+   If this key is left as the placeholder, every visitor silently
+   falls back to the built-in DATA below — nothing breaks, but
+   your dashboard edits won't show up here until it's filled in.
    ============================================================ */
 const JSONBIN_BIN_ID   = '6a7c5facda38895dfeda4195';
 const JSONBIN_URL      = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
@@ -1211,11 +1149,11 @@ const JSONBIN_URL      = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
 // Read-only Access Key — safe to hard-code, scoped to Read-only on this bin.
 const JSONBIN_READ_KEY = 'PASTE_YOUR_READ_ONLY_ACCESS_KEY_HERE';
 
-// Write key — Access Key scoped to Update-only on this bin, entered at
-// runtime from the admin panel. Never hard-code a key that can write.
-let jsonbinWriteKey = '';
-
 async function loadDataFromBin(){
+  if(JSONBIN_READ_KEY.startsWith('PASTE_')){
+    console.warn('JSONBin: JSONBIN_READ_KEY is still a placeholder — showing built-in content only. See the comment above loadDataFromBin().');
+    return false;
+  }
   try{
     const res = await fetch(JSONBIN_URL + '/latest', {
       headers: {
@@ -1233,40 +1171,6 @@ async function loadDataFromBin(){
     return true;
   }catch(err){
     console.warn('JSONBin: could not load remote data, using built-in defaults.', err);
-    return false;
-  }
-}
-
-async function saveDataToBin(){
-  if(!jsonbinWriteKey){
-    toast('Paste your JSONBin Access Key in the admin panel first.');
-    return false;
-  }
-  try{
-    const payload = {
-      profile: DATA.profile,
-      education: DATA.education,
-      skills: DATA.skills,
-      services: DATA.services,
-      projects: DATA.projects,
-      certificates: DATA.certificates,
-      stats: DATA.stats
-    };
-    const res = await fetch(JSONBIN_URL, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Access-Key': jsonbinWriteKey,
-        'X-Bin-Meta': 'false'
-      },
-      body: JSON.stringify(payload)
-    });
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    toast('Saved to JSONBin ✅');
-    return true;
-  }catch(err){
-    console.error('JSONBin save failed', err);
-    toast('Could not save — check your Access Key and connection.');
     return false;
   }
 }
@@ -1635,157 +1539,9 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
   toast('Opening your email client to send the message…');
 });
 
-/* ============================================================
-   CONTENT EDITOR (lightweight, in-memory session CMS)
-   Now also syncs with JSONBin.io — see the "JSONBIN.IO
-   INTEGRATION" block near the top of this file.
-   ============================================================ */
-const ADMIN_PASSPHRASE = 'gamil-admin'; // change before publishing
-let adminUnlocked = false;
-let activeAdminTab = 'projects';
+/* Content editing now happens entirely in dashboard.html, which
+   writes to the same JSONBin bin this page reads from above. */
 
-const adminFab = document.getElementById('adminFab');
-const adminOverlay = document.getElementById('adminOverlay');
-const adminFooterLink = document.getElementById('adminFooterLink');
-
-function openAdmin(){ adminOverlay.classList.add('open'); }
-function closeAdmin(){ adminOverlay.classList.remove('open'); }
-adminFab.addEventListener('click', openAdmin);
-adminFooterLink.addEventListener('click', openAdmin);
-document.getElementById('closeAdminBtn').addEventListener('click', closeAdmin);
-adminOverlay.addEventListener('click', (e)=>{ if(e.target.id==='adminOverlay') closeAdmin(); });
-
-// Injects a small "JSONBin Access Key" field + "Save to Cloud now"
-// button at the top of the admin panel, once, the first time the
-// panel is unlocked. Nothing is written to this file/localStorage —
-// the key lives only in the jsonbinWriteKey variable for this tab.
-function ensureJsonbinKeyUI(){
-  if(document.getElementById('jsonbinKeyRow')) return;
-  const adminContent = document.getElementById('adminContent');
-  if(!adminContent) return;
-  const row = el('div','admin-item');
-  row.id = 'jsonbinKeyRow';
-  row.style.flexDirection = 'column';
-  row.style.alignItems = 'stretch';
-  row.style.gap = '8px';
-  row.innerHTML = `
-    <div><strong>JSONBin Access Key</strong><span>Use a key scoped to Update-only on this bin — never your Master Key. Only needed to save; never written to this file.</span></div>
-    <input type="password" id="jsonbinKeyInput" placeholder="Paste your JSONBin Access Key (Update permission)"
-      style="width:100%;padding:8px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:transparent;color:inherit;">
-    <div class="admin-item-actions" style="justify-content:flex-end;gap:8px;">
-      <button id="jsonbinKeySave" class="btn btn-ghost btn-sm" type="button">Remember for this session</button>
-      <button id="jsonbinSyncNow" class="btn btn-ghost btn-sm" type="button">Save to Cloud now</button>
-    </div>`;
-  adminContent.insertBefore(row, adminContent.firstChild);
-  document.getElementById('jsonbinKeySave').addEventListener('click', ()=>{
-    jsonbinWriteKey = document.getElementById('jsonbinKeyInput').value.trim();
-    toast(jsonbinWriteKey ? 'Access Key set for this session.' : 'Access Key cleared.');
-  });
-  document.getElementById('jsonbinSyncNow').addEventListener('click', ()=>{
-    const typed = document.getElementById('jsonbinKeyInput').value.trim();
-    if(typed) jsonbinWriteKey = typed;
-    saveDataToBin();
-  });
-}
-
-document.getElementById('adminUnlock').addEventListener('click', ()=>{
-  const val = document.getElementById('adminPass').value;
-  if(val === ADMIN_PASSPHRASE){
-    adminUnlocked = true;
-    document.getElementById('adminGate').style.display = 'none';
-    document.getElementById('adminContent').style.display = 'block';
-    ensureJsonbinKeyUI();
-    renderAdminLists();
-    toast('Editor unlocked for this session.');
-  } else {
-    toast('Incorrect passphrase.');
-  }
-});
-
-document.querySelectorAll('.admin-tab').forEach(tab=>{
-  tab.addEventListener('click', ()=>{
-    activeAdminTab = tab.dataset.tab;
-    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.toggle('active', t===tab));
-    document.getElementById('adminProjects').style.display = activeAdminTab==='projects' ? 'block':'none';
-    document.getElementById('adminCertificates').style.display = activeAdminTab==='certificates' ? 'block':'none';
-  });
-});
-
-function renderAdminLists(){
-  const pList = document.getElementById('adminProjectsList');
-  pList.innerHTML = '';
-  DATA.projects.forEach(p=>{
-    const item = el('div','admin-item');
-    item.innerHTML = `<div><strong>${p.title}</strong><span>${p.category}${p.featured?' · Featured':''}</span></div>
-      <div class="admin-item-actions">
-        <button data-action="feature" title="Toggle featured"><svg width="14" height="14" viewBox="0 0 24 24" fill="${p.featured?'currentColor':'none'}" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3.1 6.3 7 1-5 4.9 1.2 6.9L12 17.8 5.7 21l1.2-6.9-5-4.9 7-1L12 2Z"/></svg></button>
-        <button data-action="delete" title="Delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></button>
-      </div>`;
-    item.querySelector('[data-action="feature"]').addEventListener('click', ()=>{
-      p.featured=!p.featured; renderAdminLists(); renderProjects();
-      toast('Updated “'+p.title+'”.'); saveDataToBin();
-    });
-    item.querySelector('[data-action="delete"]').addEventListener('click', ()=>{
-      DATA.projects = DATA.projects.filter(x=>x.id!==p.id);
-      renderAdminLists(); renderProjectFilters(); renderProjects();
-      toast('Removed “'+p.title+'”.'); saveDataToBin();
-    });
-    pList.appendChild(item);
-  });
-
-  const cList = document.getElementById('adminCertList');
-  cList.innerHTML = '';
-  if(DATA.certificates.length === 0){
-    cList.innerHTML = '<p style="color:var(--muted);font-size:.85rem">No certificates yet — add the first one below.</p>';
-  }
-  DATA.certificates.forEach(c=>{
-    const item = el('div','admin-item');
-    item.innerHTML = `<div><strong>${c.name}</strong><span>${c.issuer||''} ${c.date?'· '+c.date:''}</span></div>
-      <div class="admin-item-actions">
-        <button data-action="delete" title="Delete"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg></button>
-      </div>`;
-    item.querySelector('[data-action="delete"]').addEventListener('click', ()=>{
-      DATA.certificates = DATA.certificates.filter(x=>x.id!==c.id);
-      renderAdminLists(); renderCertFilters(); renderCertificates();
-      toast('Removed “'+c.name+'”.'); saveDataToBin();
-    });
-    cList.appendChild(item);
-  });
-}
-
-document.getElementById('addProjectBtn').addEventListener('click', ()=>{
-  const title = prompt('Project title:'); if(!title) return;
-  const category = prompt('Category (Embedded / Robotics / IoT / Web):','Embedded') || 'Embedded';
-  const summary = prompt('Short summary:','') || '';
-  const details = prompt('Full details:', summary) || summary;
-  const tags = (prompt('Tags, comma-separated:','') || '').split(',').map(t=>t.trim()).filter(Boolean);
-  DATA.projects.push({ id:'p-'+Date.now(), title, category, featured:false, summary, details, tags });
-  renderAdminLists(); renderProjectFilters(); renderProjects();
-  toast('Added project “'+title+'”.');
-  saveDataToBin();
-});
-
-document.getElementById('addCertBtn').addEventListener('click', ()=>{
-  const name = prompt('Certificate name:'); if(!name) return;
-  const issuer = prompt('Issuer:','') || '';
-  const date = prompt('Date:','') || '';
-  const category = prompt('Category:','') || '';
-  const verifyUrl = prompt('Verification URL (optional):','') || '';
-  DATA.certificates.push({ id:'c-'+Date.now(), name, issuer, date, category, credentialId:'', verifyUrl, featured:false });
-  renderAdminLists(); renderCertFilters(); renderCertificates();
-  toast('Added certificate “'+name+'”.');
-  saveDataToBin();
-});
-
-document.getElementById('exportDataBtn').addEventListener('click', ()=>{
-  const json = JSON.stringify({projects:DATA.projects, certificates:DATA.certificates}, null, 2);
-  navigator.clipboard && navigator.clipboard.writeText(json).then(()=>{
-    toast('Updated data copied to clipboard as JSON.');
-  }).catch(()=>{
-    console.log(json);
-    toast('Could not copy automatically — data logged to the console.');
-  });
-});
 
 /* ============================================================
    INIT
