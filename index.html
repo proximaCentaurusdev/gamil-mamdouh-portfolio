@@ -328,8 +328,8 @@ header.nav{
 @keyframes spin{to{transform:rotate(360deg)}}
 .hero-photo{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:23%;aspect-ratio:1/1;border-radius:50%;overflow:hidden;
-  border:2px solid #00BFFF;box-shadow:0 0 24px rgba(0,191,255,.45),0 0 0 6px rgba(0,191,255,.08);
+  width:96%;aspect-ratio:1/1;border-radius:50%;overflow:hidden;
+  border:3px solid #00BFFF;box-shadow:0 0 40px rgba(0,191,255,.5),0 0 0 10px rgba(0,191,255,.07);
   z-index:2;background:#0b1220;
 }
 .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -603,6 +603,23 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
   color:var(--muted);transition:.25s;opacity:.55;
 }
 .admin-fab:hover{opacity:1;color:var(--electric-blue-bright);border-color:var(--electric-blue)}
+
+/* ============================================================
+   17. SMALL-PHONE HARDENING
+   The card grids below use auto-fit/minmax, which is fine on
+   most phones but can force a column wider than very narrow
+   screens (≤480px) can offer, causing sideways scroll. Forcing
+   a single column here removes that risk entirely.
+   ============================================================ */
+@media (max-width:480px){
+  .container{padding-inline:16px}
+  .nav-inner{padding:14px 16px}
+  .projects-grid,.skills-grid,.services-grid,.cert-grid{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  .projects-toolbar{gap:12px}
+  .search-box{min-width:0;width:100%}
+  .admin-fab{width:42px;height:42px;bottom:16px;left:16px}
+}
 </style>
 </head>
 <body>
@@ -1450,12 +1467,19 @@ function openProjectModal(p){
     <button class="modal-close" id="modalClose2" aria-label="Close">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>${projectIcon}`;
+  const docLink = p.docUrl ? `
+    <div class="modal-section-label">Documentation</div>
+    <a class="btn btn-ghost btn-sm" href="${p.docUrl}" target="_blank" rel="noopener" style="margin-bottom:16px">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15V3M7 10l5 5 5-5M4 21h16"/></svg>
+      Open attached file
+    </a>` : '';
   document.getElementById('modalBody').innerHTML = `
     <h3>${p.title}</h3>
     <div class="project-tags">${p.featured?'<span class="chip" style="color:var(--electric-blue-bright);border-color:var(--electric-blue-bright)">★ Featured</span>':''}<span class="chip">${p.category}</span></div>
     <p>${p.details}</p>
     <div class="modal-section-label">Technologies &amp; Concepts</div>
-    <div class="project-tags">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>`;
+    <div class="project-tags">${p.tags.map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+    ${docLink}`;
   const overlay = document.getElementById('projectModal');
   overlay.classList.add('open');
   document.getElementById('modalClose2').addEventListener('click', closeModal);
@@ -1523,7 +1547,7 @@ function renderCertificates(){
       <div><h4>${c.name}</h4><div class="cert-issuer">${c.issuer||''}</div></div>
       <div class="cert-meta">
         <span>${c.date||''}${c.category ? ' · '+c.category : ''}</span>
-        <div class="cert-actions">${c.verifyUrl ? `<a class="btn btn-ghost btn-sm" href="${c.verifyUrl}" target="_blank" rel="noopener">Verify</a>` : ''}</div>
+        <div class="cert-actions">${c.verifyUrl ? `<a class="btn btn-ghost btn-sm" href="${c.verifyUrl}" target="_blank" rel="noopener">Verify</a>` : ''}${c.fileUrl ? `<a class="btn btn-ghost btn-sm" href="${c.fileUrl}" target="_blank" rel="noopener">View file</a>` : ''}</div>
       </div>`;
     grid.appendChild(card);
   });
