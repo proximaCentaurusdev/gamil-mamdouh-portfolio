@@ -594,7 +594,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 /* ============================================================
    16. ADMIN LINK — opens the real dashboard.html (a separate file).
    Editing no longer happens inline on this page; dashboard.html is
-   the single source of truth for content edits (see FIREBASE/JSONBIN
+   the single source of truth for content edits (see FIREBASE
    comment block near the top of the script for how they connect).
    ============================================================ */
 .admin-fab{
@@ -990,11 +990,15 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 
 <div class="toast-wrap" id="toastWrap"></div>
 
+<!-- Firebase (Firestore) — public read of portfolio content -->
+<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore-compat.js"></script>
+
 <script>
 /* ============================================================
    DATA — single source of truth.
    Edit these arrays/objects directly to update the DEFAULT/
-   FALLBACK content (this is used until the JSONBin data loads,
+   FALLBACK content (this is used until the Firestore data loads,
    and as a fallback if the bin can't be reached).
    Only information actually provided has been included;
    fields left as placeholders are clearly marked.
@@ -1136,51 +1140,38 @@ let activeProjectFilter = "All";
 let activeCertFilter = "All";
 
 /* ============================================================
-   JSONBIN.IO INTEGRATION — READ ONLY on this page
+   FIREBASE / FIRESTORE — READ ONLY on this page
    ------------------------------------------------------------
-   Bin ID: 6a7c5facda38895dfeda4195 (must match DEFAULT_BIN_ID in
-   dashboard.html — that file is where all writes happen now).
-
-   GET https://api.jsonbin.io/v3/b/<BIN_ID>/latest
-   JSONBin requires an X-Master-Key or X-Access-Key on every read,
-   even for a Public bin, so a *read-only* Access Key is hard-coded
-   below. Create it from your JSONBin dashboard → API Keys → Access
-   Keys, grant it ONLY "Read" permission scoped to this bin, then
-   paste it in place of the placeholder. Because it can't write or
-   touch anything else, it's safe to ship in public JS.
-
-   If this key is left as the placeholder, every visitor silently
-   falls back to the built-in DATA below — nothing breaks, but
-   your dashboard edits won't show up here until it's filled in.
+   Reads the same document dashboard.html writes to. The config
+   below is not a secret — Firebase web config is meant to be
+   public; access is controlled by the Firestore Security Rules
+   set in the Firebase console (public read, signed-in write),
+   not by hiding this object.
    ============================================================ */
-const JSONBIN_BIN_ID   = '6a7c5facda38895dfeda4195';
-const JSONBIN_URL      = `https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}`;
+const firebaseConfig = {
+  apiKey: "AIzaSyDKccKQUuXMVNzBk9I-mKOCRAQkTHgklyI",
+  authDomain: "gamilport-admin.firebaseapp.com",
+  projectId: "gamilport-admin",
+  storageBucket: "gamilport-admin.firebasestorage.app",
+  messagingSenderId: "223009469627",
+  appId: "1:223009469627:web:5970f613bd1c1a9ccba59e",
+  measurementId: "G-VBSSGHG0NB"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const PORTFOLIO_DOC = db.collection('portfolio').doc('content');
 
-// Read-only Access Key — safe to hard-code, scoped to Read-only on this bin.
-const JSONBIN_READ_KEY = '$2a$10$itqG/y2dOPzr5lOgq3CeRufsEJogaY9HIfGAQj56qCi4FnPSYFFl';
-
-async function loadDataFromBin(){
-  if(JSONBIN_READ_KEY.startsWith('PASTE_')){
-    console.warn('JSONBin: JSONBIN_READ_KEY is still a placeholder — showing built-in content only. See the comment above loadDataFromBin().');
-    return false;
-  }
+async function loadDataFromFirestore(){
   try{
-    const res = await fetch(JSONBIN_URL + '/latest', {
-      headers: {
-        'X-Access-Key': JSONBIN_READ_KEY,
-        'X-Bin-Meta': 'false'
-      }
+    const snap = await PORTFOLIO_DOC.get();
+    if(!snap.exists) return false;
+    const remote = snap.data();
+    ['profile','education','skills','services','projects','certificates','stats'].forEach(key=>{
+      if(remote[key] !== undefined) DATA[key] = remote[key];
     });
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    const remote = await res.json();
-    if(remote && typeof remote === 'object'){
-      ['profile','education','skills','services','projects','certificates','stats'].forEach(key=>{
-        if(remote[key] !== undefined) DATA[key] = remote[key];
-      });
-    }
     return true;
   }catch(err){
-    console.warn('JSONBin: could not load remote data, using built-in defaults.', err);
+    console.warn('Firestore: could not load remote data, using built-in defaults.', err);
     return false;
   }
 }
@@ -1568,18 +1559,18 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
 });
 
 /* Content editing now happens entirely in dashboard.html, which
-   writes to the same JSONBin bin this page reads from above. */
+   writes to the same Firestore document this page reads from above. */
 
 
 /* ============================================================
    INIT
-   Loads the latest data from JSONBin (if reachable/public) BEFORE
+   Loads the latest data from Firestore (if reachable) BEFORE
    the first render, then falls back to the built-in DATA above
-   automatically if the bin can't be read.
+   automatically if it can't be read.
    ============================================================ */
 (async function init(){
   document.getElementById('year').textContent = new Date().getFullYear();
-  await loadDataFromBin();
+  await loadDataFromFirestore();
   document.getElementById('contactEmail').textContent = DATA.profile.email;
   renderHeroPhoto();
   renderEducation();
