@@ -1007,9 +1007,10 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 
 <div class="toast-wrap" id="toastWrap"></div>
 
-<!-- Firebase (Firestore) — public read of portfolio content -->
+<!-- Firebase (Firestore + Realtime Database) — public read of portfolio content -->
 <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>
 
 <script>
 /* ============================================================
@@ -1170,12 +1171,16 @@ const firebaseConfig = {
   authDomain: "gamilport-admin.firebaseapp.com",
   projectId: "gamilport-admin",
   storageBucket: "gamilport-admin.firebasestorage.app",
+  // Must match the databaseURL in dashboard.html exactly — see the note
+  // there if your Realtime Database was created in a non-default region.
+  databaseURL: "https://gamilport-admin-default-rtdb.firebaseio.com",
   messagingSenderId: "223009469627",
   appId: "1:223009469627:web:5970f613bd1c1a9ccba59e",
   measurementId: "G-VBSSGHG0NB"
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
+const rtdb = firebase.database();
 const PORTFOLIO_DOC = db.collection('portfolio').doc('content');
 
 async function loadDataFromFirestore(){
@@ -1191,6 +1196,38 @@ async function loadDataFromFirestore(){
     console.warn('Firestore: could not load remote data, using built-in defaults.', err);
     return false;
   }
+}
+
+/* ------------------------------------------------------------
+   FILE POINTERS (Realtime Database)
+   docUrl / fileUrl fields uploaded from the dashboard now hold a
+   small pointer ("rtdb:{fileId}") instead of a Storage URL, since
+   the actual base64 file content lives in Realtime Database, not
+   in this Firestore document. Resolve every pointer once, right
+   after load, so the rest of the render code below can keep
+   treating p.docUrl / c.fileUrl as plain URLs like it always did.
+   ------------------------------------------------------------ */
+const RTDB_PTR_PREFIX = 'rtdb:';
+function isRtdbPointer(v){ return typeof v === 'string' && v.startsWith(RTDB_PTR_PREFIX); }
+async function resolveRtdbPointer(pointer){
+  const key = pointer.slice(RTDB_PTR_PREFIX.length);
+  try{
+    const snap = await rtdb.ref('files/' + key).once('value');
+    return snap.exists() ? (snap.val().dataUrl || '') : '';
+  }catch(err){
+    console.warn('Realtime Database: could not resolve file pointer', pointer, err);
+    return '';
+  }
+}
+async function resolveFilePointers(){
+  const jobs = [];
+  (DATA.projects || []).forEach(p=>{
+    if(isRtdbPointer(p.docUrl)) jobs.push(resolveRtdbPointer(p.docUrl).then(url => { p.docUrl = url; }));
+  });
+  (DATA.certificates || []).forEach(c=>{
+    if(isRtdbPointer(c.fileUrl)) jobs.push(resolveRtdbPointer(c.fileUrl).then(url => { c.fileUrl = url; }));
+  });
+  await Promise.all(jobs);
 }
 
 /* ============================================================
@@ -1595,6 +1632,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e){
 (async function init(){
   document.getElementById('year').textContent = new Date().getFullYear();
   await loadDataFromFirestore();
+  await resolveFilePointers();
   document.getElementById('contactEmail').textContent = DATA.profile.email;
   renderHeroPhoto();
   renderEducation();
