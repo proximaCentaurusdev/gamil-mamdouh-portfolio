@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Gamil Mamdouh — Embedded Systems &amp; Robotics · Web Development</title>
-<meta name="description" content="Gamil Mamdouh Elgamil Asham — STEM student and Embedded Systems &amp; Robotics learner. Hands-on experience across embedded systems, robotics, IoT, automation and web development.">
+<meta name="description" content="Gamil Mamdouh El Gamil Asham — Assiut STEM School student (GPA 3.5) and Digital Egypt Cubs Initiative Level Three: Embedded Systems & Robotics credential holder. Portfolio of 12 hands-on embedded, robotics, IoT and Firebase web projects.">
 <meta name="theme-color" content="#05070b">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Gamil Mamdouh — Embedded Systems & Robotics | Web Development">
-<meta property="og:description" content="Portfolio of Gamil Mamdouh Elgamil Asham: embedded systems, robotics, IoT, automation and web development projects.">
+<meta property="og:description" content="Portfolio of Gamil Mamdouh El Gamil Asham: embedded systems, robotics, IoT, automation and Firebase-backed web development projects across school, DECI, and independent work.">
 <meta property="og:image" content="https://via.placeholder.com/1200x630/05070b/00BFFF?text=Gamil+Mamdouh">
 
 <!-- Structured data -->
@@ -18,10 +18,14 @@
 {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Gamil Mamdouh Elgamil Asham",
+  "name": "Gamil Mamdouh El Gamil Asham",
   "alternateName": "Gamil Mamdouh",
   "jobTitle": "Embedded Systems & Robotics | Web Development",
-  "description": "STEM student and Embedded Systems & Robotics learner with hands-on experience in embedded, robotics, IoT, automation and web applications."
+  "description": "STEM student at Assiut STEM School and Digital Egypt Cubs Initiative participant (Level Three: Embedded Systems and Robotics) with hands-on experience in embedded, robotics, IoT, automation and web applications.",
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Assiut STEM School"
+  }
 }
 </script>
 
@@ -237,6 +241,7 @@ header.nav{
   background:rgba(5,7,11,.98);backdrop-filter:blur(10px);
   padding:30px 28px;flex-direction:column;gap:6px;
   transform:translateY(-12px);opacity:0;pointer-events:none;transition:.3s var(--ease);
+  overflow-y:auto;
 }
 .mobile-menu.open{transform:none;opacity:1;pointer-events:auto}
 .mobile-menu a{padding:16px 6px;font-size:1.1rem;border-bottom:1px solid var(--border);color:var(--muted)}
@@ -429,6 +434,17 @@ header.nav{
 .search-box input{background:none;border:none;color:var(--white);width:100%;font-size:.88rem}
 .search-box input::placeholder{color:var(--muted-2)}
 .search-box svg{flex:none;color:var(--muted)}
+
+.project-group{margin-bottom:52px}
+.project-group:last-child{margin-bottom:0}
+.project-group-title{
+  font-size:1.1rem;margin-bottom:20px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
+  padding-bottom:12px;border-bottom:1px dashed var(--border);
+}
+.project-group-sub{
+  font-family:var(--font-mono);font-size:.68rem;color:var(--muted);font-weight:400;
+  letter-spacing:.06em;text-transform:uppercase;
+}
 
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
 .project-card{
@@ -653,6 +669,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
       <a href="#skills" data-nav>Skills</a>
       <a href="#projects" data-nav>Projects</a>
       <a href="#services" data-nav>Services</a>
+      <a href="#activities" data-nav>Activities</a>
       <a href="#certificates" data-nav>Certificates</a>
       <a href="#contact" data-nav>Contact</a>
     </nav>
@@ -669,6 +686,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
   <a href="#skills" data-nav>Skills</a>
   <a href="#projects" data-nav>Projects</a>
   <a href="#services" data-nav>Services</a>
+  <a href="#activities" data-nav>Activities</a>
   <a href="#certificates" data-nav>Certificates</a>
   <a href="#contact" data-nav>Contact</a>
 </div>
@@ -687,19 +705,20 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
   <div class="container hero-grid">
     <div class="reveal in">
       <div class="hero-kicker"><span class="pulse"></span> Available for embedded &amp; web engineering work</div>
-      <h1>Gamil Mamdouh<br>Elgamil Asham<span class="last">.</span></h1>
+      <h1>Gamil Mamdouh<br>El Gamil Asham<span class="last">.</span></h1>
       <div class="hero-role">
         <span>Embedded Systems &amp; Robotics</span><span class="sep">/</span><span>Web Development</span>
       </div>
-      <p class="lead">I am a STEM student and Embedded Systems &amp; Robotics learner with hands-on experience building real-world embedded, robotics, IoT, automation, and web applications.</p>
+      <p class="lead">I am a STEM student at Assiut STEM School and a three-year Digital Egypt Cubs Initiative participant (Level Three: Embedded Systems &amp; Robotics) with hands-on experience building real-world embedded, robotics, IoT, automation, and Firebase-backed web applications.</p>
       <div class="hero-actions">
         <a href="#projects" class="btn btn-primary">Explore My Projects</a>
-        <a href="/assets/Gamil-Mamdouh-CV.pdf" class="btn btn-ghost" download>Download CV</a>
+        <a href="assets/Gamil-Mamdouh-Resume.pdf" class="btn btn-ghost" download>Download Resume</a>
+        <a href="assets/Gamil-Mamdouh-Technical-Portfolio.pdf" class="btn btn-ghost" download>Download Portfolio</a>
         <a href="#contact" class="btn btn-ghost">Contact Me</a>
       </div>
       <div class="hero-stats">
         <div><strong>3</strong><span>YEARS · DECI TRACK</span></div>
-        <div><strong>5+</strong><span>HANDS-ON PROJECTS</span></div>
+        <div><strong>12</strong><span>TECHNICAL PROJECTS</span></div>
         <div><strong>2</strong><span>ENGINEERING DISCIPLINES</span></div>
       </div>
     </div>
@@ -746,10 +765,10 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 
     <div class="about-grid">
       <div class="about-copy reveal">
-        <p>I'm a <strong>STEM student</strong> who spends most of my time where hardware and software meet — wiring up sensors, reading datasheets, and then building the interface or dashboard that makes the data useful.</p>
-        <p>My technical foundation was built at <strong>STEM Schools</strong>, where I worked on practical engineering, embedded systems, electronics, programming, and scientific projects rather than purely theoretical coursework.</p>
-        <p>Alongside that, I specialized for <strong>three years in Embedded Systems &amp; Robotics</strong> through the Digital Egypt Cubs Initiative — a sustained, practical training track covering microcontrollers, sensors, electronics, and prototyping.</p>
-        <p>That combination is why I describe myself with two directions instead of one: <strong>Embedded Systems &amp; Robotics</strong> for the physical, sensor-driven side of engineering, and <strong>Web Development</strong> for the interfaces, dashboards, and platforms that sit on top of it.</p>
+        <p>I'm a <strong>STEM student at Assiut STEM School</strong> (expected graduation 2027, GPA 3.5 across Grades 10–11) who spends most of my time where hardware and software meet — wiring up sensors, reading datasheets, and then building the interface or dashboard that makes the data useful.</p>
+        <p>Over the past three years I completed <strong>five individual embedded-systems and software projects</strong> through the <strong>Digital Egypt Cubs Initiative</strong> — a nanodegree-style program sponsored by Egypt's Ministry of Communications and Information Technology (MCIT) and managed by Udacity — progressing through verified program levels up to <strong>Level Three: Embedded Systems and Robotics</strong>.</p>
+        <p>Alongside that, I contributed to <strong>four engineering capstone projects</strong> as part of Assiut STEM School teams, and independently designed, built, and deployed <strong>three freelance web systems</strong> end to end — twelve substantial technical projects in total, consistently grounded in research, iterative testing, and measurable results.</p>
+        <p>That combination is why I describe myself with two directions instead of one: <strong>Embedded Systems &amp; Robotics</strong> for the physical, sensor-driven side of engineering, and <strong>Web Development</strong> for the interfaces, dashboards, and platforms — usually built on Firebase — that sit on top of it.</p>
       </div>
 
       <div class="pillars reveal">
@@ -775,7 +794,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
           <div class="pillar-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
           </div>
-          <div><h4>Web Development</h4><p>Frontend and backend work that turns raw project data into something people can use.</p></div>
+          <div><h4>Web Development</h4><p>Frontend and Firebase-backed backend work that turns raw project data into something people can use.</p></div>
         </div>
       </div>
     </div>
@@ -790,7 +809,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
     <div class="section-head reveal">
       <div class="eyebrow">02 · Journey</div>
       <h2>STEM education → three years of embedded training</h2>
-      <p>The path from foundational STEM coursework to a specialized, multi-year embedded systems and robotics track.</p>
+      <p>The path from Assiut STEM School coursework to a specialized, multi-year embedded systems and robotics track.</p>
     </div>
 
     <div class="timeline" id="timelineList">
@@ -820,8 +839,8 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
   <div class="container">
     <div class="section-head reveal">
       <div class="eyebrow">04 · Projects</div>
-      <h2>Selected builds</h2>
-      <p>Real hardware and software projects, from an early digital voltmeter to sensor-driven automation systems.</p>
+      <h2>Twelve builds, three tracks</h2>
+      <p>Real hardware and software projects, organized by where they came from — school engineering teams, the Digital Egypt Cubs Initiative, and independent freelance work.</p>
     </div>
 
     <div class="projects-toolbar reveal">
@@ -832,7 +851,26 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
       </div>
     </div>
 
-    <div class="projects-grid" id="projectsGrid"></div>
+    <div class="project-group" data-group="school">
+      <h3 class="project-group-title">School Team Projects <span class="project-group-sub">Assiut STEM School</span></h3>
+      <div class="projects-grid" id="projectsGrid-school"></div>
+    </div>
+
+    <div class="project-group" data-group="deci">
+      <h3 class="project-group-title">Digital Egypt Cubs Initiative <span class="project-group-sub">Individual Projects</span></h3>
+      <div class="projects-grid" id="projectsGrid-deci"></div>
+    </div>
+
+    <div class="project-group" data-group="freelance">
+      <h3 class="project-group-title">Independent / Freelance Projects <span class="project-group-sub">Solo Development</span></h3>
+      <div class="projects-grid" id="projectsGrid-freelance"></div>
+    </div>
+
+    <div class="project-group" data-group="other" id="projectGroupOther" style="display:none">
+      <h3 class="project-group-title">Other Projects</h3>
+      <div class="projects-grid" id="projectsGrid-other"></div>
+    </div>
+
     <div class="empty-state" id="projectsEmpty" style="display:none">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <h4>No projects match that search</h4>
@@ -856,14 +894,53 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 </section>
 
 <!-- ============================================================
+     LEADERSHIP & ACTIVITIES
+     ============================================================ -->
+<section id="activities">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">06 · Leadership &amp; Activities</div>
+      <h2>Beyond the workbench</h2>
+      <p>I intentionally limited formal competition participation during this period to prioritize my academic studies, while staying active in school life and technical project work.</p>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+        </div>
+        <div><h4>Computer Science Sessions</h4><p>Co-organized and delivered Computer Science sessions and presentations for peers at Assiut STEM School.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg>
+        </div>
+        <div><h4>School Community Activities</h4><p>Helped organize Ramadan activities at school, including contributing annually toward decorations, and took part in multiple school Fun Days.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.5 5.5l13 13M18.5 5.5l-13 13"/></svg>
+        </div>
+        <div><h4>School Football League</h4><p>Participated in the school football league alongside academic and project work.</p></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7l-9-5Z"/></svg>
+        </div>
+        <div><h4>Focus &amp; Priorities</h4><p>Chose to prioritize academic studies and this project portfolio over heavy competition participation during Grades 10–11.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      CERTIFICATES
      ============================================================ -->
 <section id="certificates">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">06 · Certificates</div>
+      <div class="eyebrow">07 · Certificates</div>
       <h2>Credentials &amp; training</h2>
-      <p>A growing certificate library — managed from the content editor, not hard-coded into the page.</p>
+      <p>A growing certificate library spanning embedded systems, AI &amp; cloud, programming, and professional skills — managed from the content editor, not hard-coded into the page.</p>
     </div>
 
     <div class="projects-toolbar reveal">
@@ -878,7 +955,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
     <div class="empty-state" id="certEmpty" style="display:none">
       <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15c3.3 0 6-2.7 6-6s-2.7-6-6-6-6 2.7-6 6 2.7 6 6 6z"/><path d="M8.5 14 7 22l5-3 5 3-1.5-8"/></svg>
       <h4 id="certEmptyTitle">Certificates coming soon</h4>
-      <p id="certEmptyBody">The certificate library is being catalogued and will appear here — this section already supports search, filtering and pagination for when it's populated. Add entries from the content editor (bottom-left icon).</p>
+      <p id="certEmptyBody">The certificate library is being catalogued and will appear here.</p>
     </div>
     <div class="load-more-wrap" id="certLoadMoreWrap" style="display:none">
       <button class="btn btn-ghost" id="certLoadMore">Load more certificates</button>
@@ -892,7 +969,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 <section id="achievements">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">07 · By the numbers</div>
+      <div class="eyebrow">08 · By the numbers</div>
       <h2>Where the time went</h2>
     </div>
     <div class="stats-strip reveal" id="statsStrip"></div>
@@ -905,7 +982,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 <section id="testimonials">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">08 · Testimonials</div>
+      <div class="eyebrow">09 · Testimonials</div>
       <h2>From mentors &amp; collaborators</h2>
     </div>
     <div class="testi-empty reveal">
@@ -922,7 +999,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
 <section id="contact">
   <div class="container">
     <div class="section-head reveal">
-      <div class="eyebrow">09 · Contact</div>
+      <div class="eyebrow">10 · Contact</div>
       <h2>Let's build something</h2>
       <p>Open to embedded systems, robotics, IoT, and web development opportunities and collaborations.</p>
     </div>
@@ -939,7 +1016,7 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
         </div>
         <div class="contact-card">
           <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-5.2-9.5-9.4C.7 8.4 2 4.6 5.6 3.7 8 3.1 10 4.4 12 6.5c2-2.1 4-3.4 6.4-2.8 3.6.9 4.9 4.7 3.1 7.9C19 15.8 12 21 12 21Z"/></svg></div>
-          <div><strong>Based in</strong><span>Egypt</span></div>
+          <div><strong>Based in</strong><span>Assiut, Egypt</span></div>
         </div>
         <div class="social-row">
           <a href="#" class="social-btn" aria-label="GitHub" title="GitHub — add profile URL"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.66.5 12.02c0 5.1 3.29 9.43 7.86 10.96.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.4-3.87-1.4-.53-1.32-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.2-3.09-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.2 1.18a11 11 0 0 1 5.83 0c2.22-1.5 3.19-1.18 3.19-1.18.64 1.6.24 2.78.12 3.06.75.81 1.2 1.83 1.2 3.09 0 4.42-2.7 5.39-5.26 5.67.42.36.78 1.07.78 2.16v3.2c0 .3.21.66.79.55A10.53 10.53 0 0 0 23.5 12c0-6.36-5.15-11.5-11.5-11.5Z"/></svg></a>
@@ -981,12 +1058,13 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
         <a href="#journey">Journey</a>
         <a href="#skills">Skills</a>
         <a href="#projects">Projects</a>
+        <a href="#activities">Activities</a>
         <a href="#certificates">Certificates</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> Gamil Mamdouh Elgamil Asham. All rights reserved.</span>
+      <span>© <span id="year"></span> Gamil Mamdouh El Gamil Asham. All rights reserved.</span>
       <a class="admin-link mono" href="dashboard.html" target="_blank" rel="noopener">Admin dashboard ↗</a>
     </div>
   </div>
@@ -1038,13 +1116,15 @@ footer{border-top:1px solid var(--border);padding:50px 0 30px;position:relative;
    DATA — single source of truth.
    Edit these arrays/objects directly to update the DEFAULT/
    FALLBACK content (this is used until the Firestore data loads,
-   and as a fallback if the bin can't be reached).
-   Only information actually provided has been included;
-   fields left as placeholders are clearly marked.
+   and as a fallback if the document can't be reached).
+   Only information actually provided in the resume / technical
+   portfolio has been included; unknown fields (email, phone,
+   GitHub/LinkedIn URLs, GPA for Grade 12, English test score)
+   are left as placeholders rather than invented.
    ============================================================ */
 const DATA = {
   profile:{
-    name:"Gamil Mamdouh Elgamil Asham",
+    name:"Gamil Mamdouh El Gamil Asham",
     shortName:"Gamil Mamdouh",
     email:"your.email@example.com" // TODO: replace with real email
   },
@@ -1052,21 +1132,21 @@ const DATA = {
   education:[
     {
       id:"stem",
-      title:"STEM Schools",
-      org:"STEM Education Track",
+      title:"Assiut STEM School",
+      org:"STEM Diploma Track · Expected Graduation 2027",
       duration:"Ongoing",
       featured:false,
-      body:"Studying at STEM Schools, working on practical engineering, embedded systems, electronics, programming, and scientific projects rather than purely theoretical coursework.",
-      tags:["Engineering","Electronics","Programming","Scientific Projects"]
+      body:"Studying at Assiut STEM School with a GPA of 3.5 across Grades 10–11, working on practical engineering, embedded systems, electronics, programming, and scientific research projects as part of the STEM curriculum rather than purely theoretical coursework.",
+      tags:["Engineering","Electronics","Programming","Scientific Research"]
     },
     {
       id:"deci",
       title:"Digital Egypt Cubs Initiative (DECI)",
-      org:"Embedded Systems & Robotics Specialization",
+      org:"Embedded Systems & Robotics Nanodegree · Udacity / Egypt MCIT",
       duration:"3 Years",
       featured:true,
-      body:"A three-year, practical technical training track specializing in Embedded Systems & Robotics — covering embedded systems, robotics, electronics, sensors, microcontrollers, programming, hardware and prototyping. A sustained, hands-on program rather than a short online course.",
-      tags:["Embedded Systems","Robotics","Electronics","Sensors","Microcontrollers","Prototyping"]
+      body:"A three-year, practical nanodegree-style technology program sponsored by Egypt's Ministry of Communications and Information Technology (MCIT) and managed by Udacity. Completed five individual projects — each carried out independently from design through debugging — spanning software development, digital logic, and embedded systems and robotics, progressing through verified program levels up to Level Three: Embedded Systems and Robotics.",
+      tags:["Embedded Systems","Robotics","Electronics","Sensors","Microcontrollers","MicroPython"]
     },
     {
       id:"continuous",
@@ -1074,8 +1154,8 @@ const DATA = {
       org:"Self-directed & project-based",
       duration:"Ongoing",
       featured:false,
-      body:"Extending embedded and robotics fundamentals into IoT, automation, and full web development — building complete projects end to end, from sensor to interface.",
-      tags:["IoT","Automation","Web Development"]
+      body:"Extending embedded and robotics fundamentals into automation and full-stack web development — independently designing, building, and deploying three freelance Firebase-backed systems (a streaming platform, a ministry management system, and an online exam platform) end to end, from sensor to interface.",
+      tags:["Firebase","Web Development","Automation"]
     }
   ],
 
@@ -1083,93 +1163,211 @@ const DATA = {
     {
       key:"embedded", name:"Embedded Systems", accent:"var(--electric-blue)",
       desc:"Low-level, sensor and microcontroller-driven development.",
-      items:["ESP32","Microcontrollers","Sensors","Hall Effect Sensors","Electronics","IoT","Embedded Programming","UART","I2C","SPI","PWM","ADC"]
+      items:["ESP32","Raspberry Pi Pico","Arduino","Sensors","ADC","UART","Hall Effect Sensors","MPU6050","MQTT","Embedded Programming"]
     },
     {
       key:"robotics", name:"Robotics", accent:"var(--teal)",
-      desc:"Turning sensing into physical action and control.",
-      items:["Robotics","Sensors","Actuators","Control","Automation","Prototyping"]
+      desc:"Turning sensing into physical action and simulated autonomous control.",
+      items:["Robotics","CoppeliaSim","PioneerP3DX","Actuators","Control Systems","Automation","Prototyping"]
     },
     {
       key:"programming", name:"Programming", accent:"var(--indigo)",
-      desc:"Languages used across embedded and web projects.",
-      items:["Python","C++","JavaScript","MicroPython","HTML","CSS"]
+      desc:"Languages and tools used across embedded and web projects.",
+      items:["Python","C/C++","MicroPython","JavaScript","HTML/CSS","Wokwi","Tinkercad","Git/GitHub"]
     },
     {
       key:"web", name:"Web Development", accent:"var(--pink)",
-      desc:"Building the interfaces and platforms on top of hardware projects.",
-      items:["Frontend","Backend","Responsive Design","Database Applications","UI/UX"]
+      desc:"Serverless, Firebase-backed interfaces and platforms.",
+      items:["Firebase Firestore","Realtime Database","Firebase Authentication","Firebase Storage","Frontend","Responsive Design"]
     }
   ],
 
   services:[
-    {name:"Embedded Systems Development", desc:"Sensor and microcontroller-based builds, from prototype to working device."},
-    {name:"Robotics & Automation", desc:"Control logic and automation that turns sensor data into physical action."},
-    {name:"IoT Solutions", desc:"Connecting embedded devices so their data is usable in real time."},
-    {name:"Web Application Development", desc:"Frontend and backend interfaces, dashboards, and platforms."}
+    {name:"Embedded Systems Development", desc:"Sensor and microcontroller-based builds on ESP32 and Raspberry Pi Pico, from circuit prototyping to working, tested devices."},
+    {name:"Robotics & Automation", desc:"Control logic and automation that turns sensor data into physical action, including simulated autonomous navigation in CoppeliaSim."},
+    {name:"IoT & Sensor Systems", desc:"Multi-sensor monitoring and closed-loop control systems, from soil/greenhouse sensing to distance and inclination measurement."},
+    {name:"Web & Firebase Application Development", desc:"Serverless, Firebase-backed dashboards and platforms — exam systems, streaming platforms, and management systems built end to end."}
   ],
 
+  /* Projects are grouped with a "group" field:
+       "school"    → Assiut STEM School team engineering projects
+       "deci"      → Digital Egypt Cubs Initiative individual projects
+       "freelance" → Independent / freelance solo projects
+     The Projects section on the page renders each group as its
+     own labeled subsection so the three tracks stay clearly separate. */
   projects:[
+    /* ---------------- School Team Projects ---------------- */
     {
-      id:"voltmeter",
-      title:"Digital Voltmeter",
-      category:"Embedded",
-      featured:false,
-      summary:"An early embedded systems build that measures and displays voltage digitally.",
-      details:"Built during my early Embedded Systems and Electronics learning, this project measures voltage and displays the reading digitally, forming an early foundation in analog-to-digital measurement and embedded display logic.",
-      tags:["Embedded","Electronics","ADC"]
-    },
-    {
-      id:"smartcart",
-      title:"Smart Cart System",
+      id:"greenhouse",
+      title:"Automated Greenhouse Control System",
+      group:"school",
       category:"IoT",
-      featured:false,
-      summary:"A smart cart system designed for malls and public places.",
-      details:"A complete smart cart system intended for use in malls and public places, combining embedded hardware with practical tracking and automation concepts for retail environments.",
-      tags:["Embedded","IoT","Automation"]
+      featured:true,
+      summary:"An ESP32-based multi-parameter feedback control system for greenhouse agriculture, monitoring soil moisture, humidity, and irrigation water salinity.",
+      details:"Co-developed with a 4-person school team (Grade 11, 2025/2026). Implemented rule-based IF-THEN control logic with 10-second sampling and 2-minute hysteresis across two crop profiles (Basil, Okra). The system operated autonomously for 6+ hours per session and responded to threshold breaches within ≤5 seconds. Testing showed humidity reduced from 84.3% to 73.2% in ~4 minutes, TDS from 1748 to 1487 ppm in ~15 minutes, and soil moisture recovered from 34.8% to 63.5% in ~16 minutes, at 8.5W peak actuator power (~1.10 Wh/session). All 12 design requirements were met, including data logging and a wireless web interface.",
+      tags:["ESP32","DHT22","TDS Sensor","Feedback Control","Smart Agriculture"]
     },
     {
-      id:"rollmeter",
-      title:"Rollmeter",
+      id:"rollmetric",
+      title:"Rollmetric — Digital Measuring Wheel & Inclinometer",
+      group:"school",
       category:"Robotics",
       featured:true,
-      summary:"A digital measuring wheel that converts wheel rotation into surface distance.",
-      details:"Rollmeter is a digital measuring wheel built with an ESP32 and Hall Effect sensors and magnets mounted on the wheel. As the wheel rotates, the Hall Effect sensors detect each magnet passing by, and the embedded program converts the number of detected rotations into a measured surface distance.",
-      tags:["ESP32","Hall Effect Sensors","Embedded Programming","Robotics"]
+      summary:"A dual-purpose measuring device combining a digital measuring wheel and inclinometer, built from e-waste components.",
+      details:"Built with a 4-person school team (Grade 11, 2025/2026) using an ESP32, dual Hall-effect sensors, and an MPU6050 accelerometer. Diagnosed a magnet-spacing design flaw and corrected it (5 → 10 magnets, spacing 0.999 ± 0.0004 cm), reducing distance measurement error from 33.3% to 0.2%. Replacing an early mechanical inclinometer with the MPU6050 improved final angle error to 4.2%, meeting the project's ±5% design requirement for both measurements.",
+      tags:["ESP32","Hall Effect Sensors","MPU6050","Sensor Calibration"]
     },
     {
-      id:"irrigation",
-      title:"Smart Irrigation System",
-      category:"IoT",
-      featured:true,
-      summary:"An intelligent irrigation system monitoring soil and environmental conditions.",
-      details:"An intelligent irrigation system that monitors soil moisture, temperature, soil dryness, and soil mineral-related measurements. It brings together embedded systems, IoT, smart agriculture, and automation to inform irrigation decisions from real sensor data.",
-      tags:["Embedded Systems","IoT","Smart Agriculture","Automation"]
+      id:"phs",
+      title:"Solar-Powered Pumped Hydro Storage (PHS) System",
+      group:"school",
+      category:"Embedded",
+      featured:false,
+      summary:"A solar-charged closed-loop energy storage system modeled and built largely from recycled materials.",
+      details:"Designed with a 4-person school team (Grade 10, 2024/2025) using an 18V/10W solar panel, 12V DC pump, water turbine generator, and lithium batteries, modeled in Tinkercad. Through three testing iterations — fixing leakage, reducing tap area, and increasing barrel volume — the system achieved 87.1 J of stored energy in 5 minutes, reaching the 40 J design target in ~2.5 minutes, within a footprint under 0.5 m³.",
+      tags:["Solar Energy","Tinkercad","Energy Storage","Sustainability"]
     },
+    {
+      id:"bridge",
+      title:"Hydraulic Multi-Functional Bridge",
+      group:"school",
+      category:"Embedded",
+      featured:false,
+      summary:"A multi-use bridge concept combining vehicle, pedestrian, and cyclist traffic with a working hydraulically actuated movable span.",
+      details:"Contributed to design, research, and load/force calculations for a school team project (Grade 10, 2024/2025) addressing traffic congestion at crossings. Helped construct the physical prototype using palm frond/jreed as a construction material; the hydraulically actuated movable section — allowing boat passage underneath — was functional in the completed prototype.",
+      tags:["Hydraulics","Structural Design","Prototyping"]
+    },
+
+    /* ---------------- Digital Egypt Cubs Initiative (Individual) ---------------- */
+    {
+      id:"smartdelivery",
+      title:"Smart Delivery System",
+      group:"deci",
+      category:"Robotics",
+      featured:true,
+      summary:"A two-part smart delivery system: an access-controlled control station and an autonomous simulated delivery robot.",
+      details:"Individual DECI project. Built an ESP32/MicroPython access-controlled delivery station with a 30-second lockout after 3 failed code attempts, MQTT messaging, and microSD logging, paired with an autonomous CoppeliaSim/Python delivery robot (PioneerP3DX) featuring obstacle avoidance, destination detection, and stopping within 0.20 m of its target destination.",
+      tags:["ESP32","MicroPython","MQTT","CoppeliaSim","PioneerP3DX"]
+    },
+    {
+      id:"smartparking",
+      title:"Smart Parking System",
+      group:"deci",
+      category:"Embedded",
+      featured:false,
+      summary:"Non-blocking ESP32 control logic for an automatic parking entrance barrier using ultrasonic sensing.",
+      details:"Individual DECI project. Implemented non-blocking, loop-based control logic (without Pin.irq or Timer callbacks) requiring 2 consecutive valid ultrasonic readings at or below 100 cm before classifying an arriving vehicle, reducing false triggers. The barrier opened automatically when space was available and closed after entry or a 30-second timeout, reporting status over UART.",
+      tags:["ESP32","Ultrasonic Sensor","State Machine","UART"]
+    },
+    {
+      id:"voltmeter",
+      title:"Embedded Voltmeter",
+      group:"deci",
+      category:"Embedded",
+      featured:false,
+      summary:"A Raspberry Pi Pico ADC-based voltmeter with signal averaging and a seven-segment display.",
+      details:"Individual DECI project. Read an analog signal via the Pico's ADC, applied averaging to reduce fluctuations and button debouncing for reliable input, then used an edge-triggered interrupt and timer-based display scanning to drive a four-digit seven-segment display without blocking other logic.",
+      tags:["Raspberry Pi Pico","ADC","Seven-Segment Display","MicroPython"]
+    },
+    {
+      id:"digitalinterface",
+      title:"Digital Device-Control Interface",
+      group:"deci",
+      category:"Embedded",
+      featured:false,
+      summary:"A passcode-gated microcontroller interface combining digital logic theory with embedded programming.",
+      details:"Individual DECI project. Built the circuit in the Wokwi simulator, wiring pushbuttons, LEDs, and a multiplexer to a Raspberry Pi Pico, and implemented passcode-checking control logic translating button input sequences into binary comparisons using AND/OR/NOT gate logic.",
+      tags:["Raspberry Pi Pico","Wokwi","Digital Logic","MicroPython"]
+    },
+    {
+      id:"adventuregame",
+      title:"Adventure Game",
+      group:"deci",
+      category:"Programming",
+      featured:false,
+      summary:"A text-based Python adventure game with branching outcomes and state tracking.",
+      details:"Individual DECI project. Built a console-based game using input(), if/else branching, and while loops, with random events, game-state tracking (e.g. total_score), input validation, and adherence to PEP 8 style conventions across a fully playable, replayable experience with multiple distinct endings.",
+      tags:["Python","Control Flow","Input Validation"]
+    },
+
+    /* ---------------- Independent / Freelance Projects ---------------- */
     {
       id:"examplatform",
-      title:"Online Examination Platform",
+      title:"Online Exam / Quiz System",
+      group:"freelance",
+      category:"Web",
+      featured:true,
+      summary:"A fully serverless exam platform with five question types, real-time integrity monitoring, and a live admin dashboard.",
+      details:"Sole developer. Two static HTML files — a student exam client and an admin dashboard — backed by Firebase Realtime Database with no custom backend. Supports Multiple Choice, Multi-select, True/False, Matching, and Essay questions with per-question and master timers, detects tab switching/DevTools/right-click and other integrity violations, and gives admins full control over question banks, access codes, live results, and manual score overrides.",
+      tags:["Firebase Realtime Database","JavaScript","Exam Integrity","Admin Dashboard"]
+    },
+    {
+      id:"hymnministry",
+      title:"St. Mark's Church Hymn Ministry Management System",
+      group:"freelance",
       category:"Web",
       featured:false,
-      summary:"A web-based examination platform for teachers and students.",
-      details:"A web-based examination platform built for teachers and students, covering online exams, data management, teacher and student functionality, and a responsive UI end to end.",
-      tags:["Web Development","Frontend","Backend","Database"]
+      summary:"An Arabic (RTL), Firebase-backed system managing students, attendance, exams, and leaderboards for a church hymn ministry.",
+      details:"Sole developer, including a post-launch audit. A single self-contained HTML file using Firebase Realtime Database, Firebase Storage, and SheetJS for Excel export, built right-to-left in Arabic. Manages student records, weekly meeting and Mass attendance with parent follow-up, an exam/gradebook module with percentage and letter grading, and a leaderboard system across 8 hymn skill levels. A follow-up audit resolved a startup race condition and an XSS gap, added handling for unhandled Firebase errors, fixed a timer leak, and removed unnecessary re-rendering.",
+      tags:["Firebase","Arabic/RTL","SheetJS","Data Management"]
+    },
+    {
+      id:"streaming",
+      title:"Thyatira Team — Entertainment Streaming Platform",
+      group:"freelance",
+      category:"Web",
+      featured:false,
+      summary:"A streaming platform for a theater group's recorded productions, with access codes and anti-piracy deterrents.",
+      details:"Sole developer. Two self-contained HTML files — a public viewer and an admin dashboard — backed entirely by Firebase Firestore, Authentication, and Security Rules, serving video via YouTube and Google Drive rather than a custom media server. The admin dashboard generates and manages bulk access codes with configurable expiry, device limits, and usage analytics; the viewer includes a moving watermark, tab-loss/DevTools detection, and right-click/keyboard-shortcut restrictions as deterrents against casual piracy (not true DRM).",
+      tags:["Firebase Firestore","Firebase Auth","Security Rules","Anti-Piracy"]
     }
   ],
 
-  // Certificate library — intentionally empty. The gallery below
-  // (search, filter, pagination, empty state) is fully built to
-  // scale past 34+ entries; add objects shaped like the example
-  // below via the content editor or directly in this array:
-  // { id:"cert-1", name:"Certificate Name", issuer:"Issuer", date:"2024",
-  //   category:"Embedded Systems", credentialId:"", verifyUrl:"", featured:false }
-  certificates:[],
+  // Certificate library — 33 distinct certificates extracted from the
+  // supplied certificate files (duplicate scanned images of the same
+  // certificate/verification code have been omitted; see Technical
+  // Portfolio §8 for the full accounting).
+  certificates:[
+    { id:"cert-01", name:"Cloud Basics: Development and Basic Concepts (CRA Training Program)", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-02", name:"SQL Intermediate", issuer:"Sololearn", date:"Oct 2025", category:"Programming & Web", featured:false },
+    { id:"cert-03", name:"Introduction to SQL", issuer:"Sololearn", date:"Oct 2025", category:"Programming & Web", featured:false },
+    { id:"cert-04", name:"Digital Egypt Cubs Initiative — Level Two", issuer:"Udacity / Egypt MCIT", date:"Oct 2024", category:"Embedded Systems", featured:true },
+    { id:"cert-05", name:"Fundamentals of Digital Marketing (Maharat min Google)", issuer:"Google", date:"Jul 2024", category:"Professional Skills", featured:false },
+    { id:"cert-06", name:"Python Developer", issuer:"Sololearn", date:"Feb 2025", category:"Programming & Web", featured:false },
+    { id:"cert-07", name:"AI for Beginners", issuer:"HP LIFE", date:"", category:"AI & Cloud", featured:false },
+    { id:"cert-08", name:"AI Basic: Overview of AI (CRA Training Program)", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-09", name:"Artificial Intelligence and Applications", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-10", name:"Artificial Intelligence Technology and Applications", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-11", name:"Digital Egypt Cubs Initiative — Level Three: Embedded Systems and Robotics", issuer:"Udacity / Egypt MCIT", date:"Oct 2025", category:"Embedded Systems", featured:true },
+    { id:"cert-12", name:"Microprocessors and Microcontrollers (Professional Certificate Program)", issuer:"Academy Europe Open University", date:"Dec 2025", category:"Embedded Systems", featured:true },
+    { id:"cert-13", name:"Data Management and Analysis (CRA Training Program)", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-14", name:"Data Management and Analytics", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-15", name:"Python Machine Learning: From Beginner to Pro", issuer:"Udemy (Learnify IT)", date:"Mar 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-16", name:"Hands-On Python Machine Learning with Real World Projects", issuer:"Udemy (Sayman Creative Institute)", date:"Mar 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-17", name:"The Best ChatGPT & AI Course: Make Money With AI", issuer:"Udemy (Gerard Yadav)", date:"Mar 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-18", name:"HTML 5 With Quizzes And Python 3 Complete Course", issuer:"Udemy (Horizon Tech)", date:"Mar 2025", category:"Programming & Web", featured:false },
+    { id:"cert-19", name:"Python for Everyone: Master the Basics of Programming", issuer:"Udemy (Sayman Creative Institute)", date:"Jun 2025", category:"Programming & Web", featured:false },
+    { id:"cert-20", name:"Development and Basic Concepts of Cloud Computing", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-21", name:"Effective Leadership", issuer:"HP LIFE", date:"", category:"Professional Skills", featured:false },
+    { id:"cert-22", name:"Effective Presentations", issuer:"HP LIFE", date:"Aug 2026", category:"Professional Skills", featured:false },
+    { id:"cert-23", name:"Tech for Everyone", issuer:"Sololearn", date:"Mar 2025", category:"Programming & Web", featured:false },
+    { id:"cert-24", name:"Python", issuer:"Kaggle", date:"Feb 2025", category:"Programming & Web", featured:false },
+    { id:"cert-25", name:"Information Representation and Data Organization (CRA Training Program)", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-26", name:"Introduction to Modern AI", issuer:"Cisco Networking Academy", date:"Aug 2026", category:"AI & Cloud", featured:false },
+    { id:"cert-27", name:"Overview of AI", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-28", name:"Python Programming Basics", issuer:"Huawei ICT Academy", date:"Dec 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-29", name:"Collaborative Artificial Intelligence — A Foundation Course", issuer:"Udemy (Prince Patni)", date:"Mar 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-30", name:"Object-Oriented Programming (OOP) — Learn to Code Faster", issuer:"Udemy (SDE Arts, Ahmed El Mohandes)", date:"Jun 2025", category:"Programming & Web", featured:false },
+    { id:"cert-31", name:"HTML5 CSS3 and JavaScript for Beginners: From Zero to Hero", issuer:"Udemy (Mehmood Khalil)", date:"Mar 2025", category:"Programming & Web", featured:false },
+    { id:"cert-32", name:"Numpy For Data Science — Real Time Experience", issuer:"Udemy (Data Science Lovers)", date:"Mar 2025", category:"AI & Cloud", featured:false },
+    { id:"cert-33", name:"Python For Data Science — Real Time Experience", issuer:"Udemy (Data Science Lovers)", date:"Mar 2025", category:"AI & Cloud", featured:false }
+  ],
 
   stats:[
     {value:"3", suffix:"", label:"YEARS · DECI EMBEDDED & ROBOTICS"},
-    {value:"5", suffix:"+", label:"HANDS-ON PROJECTS"},
-    {value:"2", suffix:"", label:"CORE ENGINEERING DISCIPLINES"},
-    {value:"12", suffix:"+", label:"TECHNOLOGIES USED"}
+    {value:"12", suffix:"", label:"HANDS-ON TECHNICAL PROJECTS"},
+    {value:"33", suffix:"", label:"CERTIFICATIONS COMPLETED"},
+    {value:"2", suffix:"", label:"CORE ENGINEERING DISCIPLINES"}
   ]
 };
 
@@ -1272,8 +1470,8 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
 /* ============================================================
    NAV — active link + mobile menu + rail
    ============================================================ */
-const sections = ['home','about','journey','skills','projects','services','certificates','achievements','testimonials','contact'];
-const railLabels = {home:'Home',about:'About',journey:'Journey',skills:'Skills',projects:'Projects',services:'Services',certificates:'Certificates',achievements:'Stats',testimonials:'Testimonials',contact:'Contact'};
+const sections = ['home','about','journey','skills','projects','services','activities','certificates','achievements','testimonials','contact'];
+const railLabels = {home:'Home',about:'About',journey:'Journey',skills:'Skills',projects:'Projects',services:'Services',activities:'Activities',certificates:'Certificates',achievements:'Stats',testimonials:'Testimonials',contact:'Contact'};
 
 function buildRail(){
   const rail = document.getElementById('rail');
@@ -1525,9 +1723,10 @@ document.getElementById('fileLightboxClose').addEventListener('click', closeFile
 document.getElementById('fileLightbox').addEventListener('click', (e)=>{ if(e.target.id==='fileLightbox') closeFileLightbox(); });
 
 /* ============================================================
-   RENDER: PROJECTS (filter + search + modal)
+   RENDER: PROJECTS (filter + search + grouped subsections + modal)
    ============================================================ */
 const projectIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>';
+const PROJECT_GROUPS = ['school','deci','freelance'];
 
 function renderProjectFilters(){
   const cats = ["All", ...new Set(DATA.projects.map(p=>p.category))];
@@ -1540,11 +1739,31 @@ function renderProjectFilters(){
   });
 }
 
+function buildProjectCard(p){
+  const card = el('article','project-card reveal in');
+  card.innerHTML = `
+    <div class="project-media">
+      ${p.featured ? '<span class="badge-featured">★ Featured</span>' : ''}
+      <span class="badge-cat">${p.category}</span>
+      ${projectIcon}
+    </div>
+    <div class="project-body">
+      <h3>${p.title}</h3>
+      <p>${p.summary}</p>
+      <div class="project-tags">${p.tags.slice(0,3).map(t=>`<span class="chip">${t}</span>`).join('')}</div>
+      <div class="project-foot">
+        <span class="project-link">View details
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+      </div>
+    </div>`;
+  card.addEventListener('click', ()=>openProjectModal(p));
+  return card;
+}
+
 function renderProjects(){
-  const grid = document.getElementById('projectsGrid');
   const empty = document.getElementById('projectsEmpty');
   const q = document.getElementById('projectSearch').value.trim().toLowerCase();
-  grid.innerHTML = '';
   const filtered = DATA.projects.filter(p=>{
     const matchesCat = activeProjectFilter === 'All' || p.category === activeProjectFilter;
     const hay = (p.title+' '+p.summary+' '+p.tags.join(' ')).toLowerCase();
@@ -1552,27 +1771,24 @@ function renderProjects(){
     return matchesCat && matchesQ;
   });
   empty.style.display = filtered.length ? 'none' : 'block';
-  filtered.forEach((p,i)=>{
-    const card = el('article','project-card reveal in');
-    card.innerHTML = `
-      <div class="project-media">
-        ${p.featured ? '<span class="badge-featured">★ Featured</span>' : ''}
-        <span class="badge-cat">${p.category}</span>
-        ${projectIcon}
-      </div>
-      <div class="project-body">
-        <h3>${p.title}</h3>
-        <p>${p.summary}</p>
-        <div class="project-tags">${p.tags.slice(0,3).map(t=>`<span class="chip">${t}</span>`).join('')}</div>
-        <div class="project-foot">
-          <span class="project-link">View details
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-        </div>
-      </div>`;
-    card.addEventListener('click', ()=>openProjectModal(p));
-    grid.appendChild(card);
+
+  PROJECT_GROUPS.forEach(g=>{
+    const grid = document.getElementById('projectsGrid-'+g);
+    const wrap = grid.closest('.project-group');
+    const items = filtered.filter(p=>p.group===g);
+    grid.innerHTML = '';
+    items.forEach(p=>grid.appendChild(buildProjectCard(p)));
+    wrap.style.display = items.length ? '' : 'none';
   });
+
+  // Any project without a recognized group (e.g. newly added via the
+  // dashboard without one set) still needs somewhere to render.
+  const otherItems = filtered.filter(p=>!PROJECT_GROUPS.includes(p.group));
+  const otherWrap = document.getElementById('projectGroupOther');
+  const otherGrid = document.getElementById('projectsGrid-other');
+  otherGrid.innerHTML = '';
+  otherItems.forEach(p=>otherGrid.appendChild(buildProjectCard(p)));
+  otherWrap.style.display = otherItems.length ? '' : 'none';
 }
 
 function openProjectModal(p){
@@ -1603,7 +1819,7 @@ function openProjectModal(p){
 function closeModal(){ document.getElementById('projectModal').classList.remove('open'); }
 document.getElementById('modalClose').addEventListener('click', closeModal);
 document.getElementById('projectModal').addEventListener('click', (e)=>{ if(e.target.id==='projectModal') closeModal(); });
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeModal(); closeFileLightbox(); closeAdmin(); } });
+document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ closeModal(); closeFileLightbox(); } });
 document.getElementById('projectSearch').addEventListener('input', renderProjects);
 
 /* ============================================================
